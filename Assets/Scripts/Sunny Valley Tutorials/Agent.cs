@@ -43,16 +43,18 @@ public class Agent : MonoBehaviour
         move.action.canceled -= OnMoveCanceled;
 
         look.action.performed -= OnLookPerformed;
+
+        fire.action.performed -= OnFirePerformed;
+        fire.action.canceled -= OnFireCanceled;
     }
 
     private void Update()
     {
-        //RotateTowardsMouse();
+        // lookInput = CalcMouseScreenPosition();
         moveInput = move.action.ReadValue<Vector2>().normalized;
-        lookInput = GetLookInput();
 
         agentMover.moveInput = moveInput;
-        // AnimateCharacter();
+        RotateTowardPointer();
     }
 
     void OnMovePerformed(InputAction.CallbackContext context)
@@ -66,18 +68,36 @@ public class Agent : MonoBehaviour
         moveInput = Vector2.zero;
     }
 
-    // void OnLookPerformed(InputAction.CallbackContext context)
-    // {
-    //     lookInput = context.ReadValue<Vector2>();
-    //     //Debug.Log("lookInput: " + lookInput);
-    // }
+    void OnLookPerformed(InputAction.CallbackContext context)
+    {
+        lookInput = context.ReadValue<Vector2>();
+        //Debug.Log("lookInput: " + lookInput);
+    }
 
-    // void RotateTowardsMouse()
+    void RotateTowardPointer()
+    {
+        Vector3 mouseScreenPosition = new Vector3(lookInput.x, lookInput.y, Camera.main.nearClipPlane);
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
+        Vector3 direction = mouseWorldPosition - transform.position;
+        direction.z = 0f;
+
+        if (direction.magnitude > 0.1f)
+        {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+            Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+    }
+
+    Vector2 CalcMouseScreenPosition()
+    {
+        Vector3 mouseScreenPosition = new Vector3(lookInput.x, lookInput.y, Camera.main.nearClipPlane);
+        return Camera.main.ScreenToWorldPoint(mouseScreenPosition);
+    }
+
+    // void RotateTowardPointer()
     // {
-    //     Vector3 mouseScreenPosition = new Vector3(lookInput.x, lookInput.y, Camera.main.nearClipPlane);
-    //     Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
-    //     Vector3 direction = mouseWorldPosition - transform.position;
-    //     direction.z = 0f;
+    //     Vector2 direction = lookInput - (Vector2)transform.position;
 
     //     if (direction.magnitude > 0.1f)
     //     {
@@ -85,20 +105,8 @@ public class Agent : MonoBehaviour
     //         Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
     //         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     //     }
+
     // }
-
-    Vector2 GetLookInput()
-    {
-        Vector3 mouseScreenPosition = look.action.ReadValue<Vector2>();
-        mouseScreenPosition.z = Camera.main.nearClipPlane;
-        return Camera.main.ScreenToWorldPoint(mouseScreenPosition);
-    }
-
-    void RotateToLookInput()
-    {
-        Vector2 lookDirection = lookInput - (Vector2)transform.position;
-        
-    }
 
 
     void OnFirePerformed(InputAction.CallbackContext context)
