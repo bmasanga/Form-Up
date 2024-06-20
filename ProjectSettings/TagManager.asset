@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Boundary
+  - Water
+  - UI
+  - Background
+  - Player
+  - Player Projectile
+  - Enemy
+  - Enemy Projectile
+  - Particle
+  - Obstacle
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3713419689
+    locked: 0
+  - name: Obstacle
+    uniqueID: 2710372469
+    locked: 0
+  - name: Enemy Projecitle
+    uniqueID: 3663384829
+    locked: 0
+  - name: Player Projectile
+    uniqueID: 3120929081
+    locked: 0
+  - name: Particle
+    uniqueID: 642656039
+    locked: 0
+  - name: Enemy
+    uniqueID: 1907893191
+    locked: 0
+  - name: Player
+    uniqueID: 3290700445
+    locked: 0
+  - name: Clouds
+    uniqueID: 2281912231
+    locked: 0
