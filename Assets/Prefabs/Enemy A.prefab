@@ -439,19 +439,31 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7757009608851383827}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2a0279092a7742459ec467fe20a2b1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  steeringBehaviors:
-  - {fileID: 7802896644887258432}
-  - {fileID: 8483025972860043757}
+  steeringBehaviours: []
   detectors:
   - {fileID: 2712958422977731134}
   - {fileID: 7255822359823033424}
   aiData: {fileID: 3857253175877663852}
   detectionDelay: 0.05
+  aiUpdateDelay: 0.06
+  attackDelay: 1
+  attackDistance: 0.5
+  OnAttackPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnMovementInput:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerInput:
+    m_PersistentCalls:
+      m_Calls: []
+  movementInput: {x: 0, y: 0}
+  movementDirectionSolver: {fileID: 0}
 --- !u!1 &8270464925562887636
 GameObject:
   m_ObjectHideFlags: 0
