@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.IO.LowLevel.Unsafe;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Agent : MonoBehaviour
 {
-    [SerializeField] InputActionReference move, look, fire;
+    // [SerializeField] InputActionReference move, look;
     [SerializeField] float rotationSpeed = 200f;
     
     [Header("Shooter")]
@@ -15,9 +15,20 @@ public class Agent : MonoBehaviour
     
     AgentMover agentMover;
 
-    Vector2 lookInput, moveInput;
+    Vector2 _lookInput, _moveInput;
 
     bool isAlive = true;
+
+    public Vector2 lookInput 
+    { 
+        get => _lookInput; 
+        set => _lookInput = value; 
+    }
+    
+    public Vector2 moveInput 
+    { 
+        get => _moveInput; 
+        set => _moveInput = value; }
 
 
     private void Awake()
@@ -27,50 +38,67 @@ public class Agent : MonoBehaviour
     
     private void OnEnable()
     {
-        move.action.performed += OnMovePerformed;
-        move.action.canceled += OnMoveCanceled;
+        // move.action.performed += OnMovePerformed;
+        // move.action.canceled += OnMoveCanceled;
 
-        look.action.performed += OnLookPerformed;
+        // look.action.performed += OnLookPerformed;
 
-        fire.action.performed += OnFirePerformed;
-        fire.action.canceled += OnFireCanceled;
+        // fire.action.performed += OnFirePerformed;
+        // fire.action.canceled += OnFireCanceled;
 
+        // Subscribing to events from PlayerInput
+        PlayerInput playerInput = FindObjectOfType<PlayerInput>();
+        if (playerInput != null)
+        {
+            playerInput.OnMoveInput.AddListener(OnMovePerformed);
+            playerInput.OnLookInput.AddListener(OnLookPerformed);
+            playerInput.OnFireInput.AddListener(OnFirePerformed);
+            playerInput.OnFireCancel.AddListener(OnFireCanceled);
+        }
     }
 
     private void OnDisable()
     {
-        move.action.performed -= OnMovePerformed;
-        move.action.canceled -= OnMoveCanceled;
+        // move.action.performed -= OnMovePerformed;
+        // move.action.canceled -= OnMoveCanceled;
 
-        look.action.performed -= OnLookPerformed;
+        // look.action.performed -= OnLookPerformed;
 
-        fire.action.performed -= OnFirePerformed;
-        fire.action.canceled -= OnFireCanceled;
+        // fire.action.performed -= OnFirePerformed;
+        // fire.action.canceled -= OnFireCanceled;
+        PlayerInput playerInput = FindObjectOfType<PlayerInput>();
+        if (playerInput != null)
+        {
+            playerInput.OnMoveInput.RemoveListener(OnMovePerformed);
+            playerInput.OnLookInput.RemoveListener(OnLookPerformed);
+            playerInput.OnFireInput.RemoveListener(OnFirePerformed);
+            playerInput.OnFireCancel.RemoveListener(OnFireCanceled);
+        }
     }
 
     private void Update()
     {
         // lookInput = CalcMouseScreenPosition();
-        moveInput = move.action.ReadValue<Vector2>().normalized;
+        // moveInput = move.action.ReadValue<Vector2>().normalized;
 
         agentMover.moveInput = moveInput;
         RotateTowardPointer();
     }
 
-    void OnMovePerformed(InputAction.CallbackContext context)
+    public void OnMovePerformed(Vector2 input)
     {
-        moveInput = context.ReadValue<Vector2>();
+        moveInput = input;
         //Debug.Log("moveInput: " + moveInput);
     }
 
-    void OnMoveCanceled(InputAction.CallbackContext context)
-    {
-        moveInput = Vector2.zero;
-    }
+    // void OnMoveCanceled(InputAction.CallbackContext context)
+    // {
+    //     moveInput = Vector2.zero;
+    // }
 
-    void OnLookPerformed(InputAction.CallbackContext context)
+    public void OnLookPerformed(Vector2 input)
     {
-        lookInput = context.ReadValue<Vector2>();
+        lookInput = input;
         //Debug.Log("lookInput: " + lookInput);
     }
 
@@ -95,28 +123,14 @@ public class Agent : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(mouseScreenPosition);
     }
 
-    // void RotateTowardPointer()
-    // {
-    //     Vector2 direction = lookInput - (Vector2)transform.position;
-
-    //     if (direction.magnitude > 0.1f)
-    //     {
-    //         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-    //         Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
-    //         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-    //     }
-
-    // }
-
-
-    void OnFirePerformed(InputAction.CallbackContext context)
+    public void OnFirePerformed()
     {
         if (!isAlive) return;
-        shooter.isFiring = context.ReadValue<float>() > 0;
+        shooter.isFiring = true;
         //Debug.Log("firing");
     }
 
-    void OnFireCanceled(InputAction.CallbackContext context)
+    public void OnFireCanceled()
     {
         shooter.isFiring = false;
     }

@@ -19420,6 +19420,7 @@ GameObject:
   - component: {fileID: 6970215870388291342}
   - component: {fileID: 1848056650609260082}
   - component: {fileID: 297698273703169112}
+  - component: {fileID: 7044150715895627613}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -19609,9 +19610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dff3ac276f743cc88c6856ec5f34b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: {fileID: -3837979434965878655, guid: 82942681fc2104b23980c7b89c2db655, type: 3}
-  look: {fileID: -5320315507278476564, guid: 82942681fc2104b23980c7b89c2db655, type: 3}
-  fire: {fileID: 6637784419796003697, guid: 82942681fc2104b23980c7b89c2db655, type: 3}
   rotationSpeed: 200
   shooter: {fileID: 5928908281702880101}
 --- !u!114 &297698273703169112
@@ -19635,6 +19633,81 @@ MonoBehaviour:
   backwardThrustEffect2: {fileID: 6087388884706043040}
   rightThrustEffect: {fileID: 7850673386602849595}
   leftThrustEffect: {fileID: 7129464356729644488}
+--- !u!114 &7044150715895627613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5219912919521325378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a072cd6776f54ee8bdeaff2b1648e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnMoveInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1848056650609260082}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: set_moveInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnLookInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1848056650609260082}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: set_lookInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnFireInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1848056650609260082}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: OnFirePerformed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnFireCancel:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1848056650609260082}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: OnFireCanceled
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  move: {fileID: 0}
+  look: {fileID: 0}
+  fire: {fileID: 6637784419796003697, guid: 82942681fc2104b23980c7b89c2db655, type: 3}
 --- !u!1 &6602694081839849784
 GameObject:
   m_ObjectHideFlags: 0
