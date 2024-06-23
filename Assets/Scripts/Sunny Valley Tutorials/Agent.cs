@@ -1,77 +1,95 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Agent : MonoBehaviour
 {
-    [SerializeField] InputActionReference move, look, fire;
     [SerializeField] float rotationSpeed = 200f;
-    
+
     [Header("Shooter")]
     [SerializeField] Shooter shooter;
-    
+
     AgentMover agentMover;
 
-    Vector2 lookInput, moveInput;
+    private Vector2 _lookInput, _moveInput;
+
+    public Vector2 lookInput
+    {
+        get => _lookInput;
+        set => _lookInput = value;
+    }
+
+    public Vector2 moveInput
+    {
+        get => _moveInput;
+        set => _moveInput = value;
+    }
 
     bool isAlive = true;
-
 
     private void Awake()
     {
         agentMover = GetComponent<AgentMover>();
     }
-    
+
     private void OnEnable()
     {
-        move.action.performed += OnMovePerformed;
-        move.action.canceled += OnMoveCanceled;
-
-        look.action.performed += OnLookPerformed;
-
-        fire.action.performed += OnFirePerformed;
-        fire.action.canceled += OnFireCanceled;
-
+        // Subscribing to events from PlayerInput
+        PlayerInput playerInput = FindObjectOfType<PlayerInput>();
+        if (playerInput != null)
+        {
+            playerInput.OnMoveInput.AddListener(OnMovePerformed);
+            playerInput.OnLookInput.AddListener(OnLookPerformed);
+            playerInput.OnFireInput.AddListener(OnFirePerformed);
+            playerInput.OnFireCancel.AddListener(OnFireCanceled);
+        }
+        // Subscribing to events from EnemyAI
+        EnemyAI enemyAI = GetComponent<EnemyAI>();
+        if (enemyAI != null)
+        {
+            enemyAI.OnMoveInput.AddListener(OnMovePerformed);
+            enemyAI.OnLookInput.AddListener(OnLookPerformed);
+            enemyAI.OnFireInput.AddListener(OnFirePerformed);
+            enemyAI.OnFireCancel.AddListener(OnFireCanceled);
+        }
     }
 
     private void OnDisable()
     {
-        move.action.performed -= OnMovePerformed;
-        move.action.canceled -= OnMoveCanceled;
-
-        look.action.performed -= OnLookPerformed;
-
-        fire.action.performed -= OnFirePerformed;
-        fire.action.canceled -= OnFireCanceled;
+        PlayerInput playerInput = FindObjectOfType<PlayerInput>();
+        if (playerInput != null)
+        {
+            playerInput.OnMoveInput.RemoveListener(OnMovePerformed);
+            playerInput.OnLookInput.RemoveListener(OnLookPerformed);
+            playerInput.OnFireInput.RemoveListener(OnFirePerformed);
+            playerInput.OnFireCancel.RemoveListener(OnFireCanceled);
+        }
+        // Unsubscribing from events from EnemyAI
+        EnemyAI enemyAI = GetComponent<EnemyAI>();
+        if (enemyAI != null)
+        {
+            enemyAI.OnMoveInput.RemoveListener(OnMovePerformed);
+            enemyAI.OnLookInput.RemoveListener(OnLookPerformed);
+            enemyAI.OnFireInput.RemoveListener(OnFirePerformed);
+            enemyAI.OnFireCancel.RemoveListener(OnFireCanceled);
+        }
     }
 
     private void Update()
     {
-        // lookInput = CalcMouseScreenPosition();
-        moveInput = move.action.ReadValue<Vector2>().normalized;
-
         agentMover.moveInput = moveInput;
         RotateTowardPointer();
     }
 
-    void OnMovePerformed(InputAction.CallbackContext context)
+    public void OnMovePerformed(Vector2 input)
     {
-        moveInput = context.ReadValue<Vector2>();
-        //Debug.Log("moveInput: " + moveInput);
+        moveInput = input;
     }
 
-    void OnMoveCanceled(InputAction.CallbackContext context)
+    public void OnLookPerformed(Vector2 input)
     {
-        moveInput = Vector2.zero;
-    }
-
-    void OnLookPerformed(InputAction.CallbackContext context)
-    {
-        lookInput = context.ReadValue<Vector2>();
-        //Debug.Log("lookInput: " + lookInput);
+        lookInput = input;
     }
 
     void RotateTowardPointer()
@@ -89,34 +107,13 @@ public class Agent : MonoBehaviour
         }
     }
 
-    Vector2 CalcMouseScreenPosition()
-    {
-        Vector3 mouseScreenPosition = new Vector3(lookInput.x, lookInput.y, Camera.main.nearClipPlane);
-        return Camera.main.ScreenToWorldPoint(mouseScreenPosition);
-    }
-
-    // void RotateTowardPointer()
-    // {
-    //     Vector2 direction = lookInput - (Vector2)transform.position;
-
-    //     if (direction.magnitude > 0.1f)
-    //     {
-    //         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-    //         Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
-    //         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-    //     }
-
-    // }
-
-
-    void OnFirePerformed(InputAction.CallbackContext context)
+    public void OnFirePerformed()
     {
         if (!isAlive) return;
-        shooter.isFiring = context.ReadValue<float>() > 0;
-        //Debug.Log("firing");
+        shooter.isFiring = true;
     }
 
-    void OnFireCanceled(InputAction.CallbackContext context)
+    public void OnFireCanceled()
     {
         shooter.isFiring = false;
     }
