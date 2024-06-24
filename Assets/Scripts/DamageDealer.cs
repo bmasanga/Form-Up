@@ -19,7 +19,7 @@ public class DamageDealer : MonoBehaviour
 
      void OnTriggerEnter2D(Collider2D other)
      {
-          if(other.gameObject.layer == LayerMask.NameToLayer("Environment"))
+          if(other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
           {
                Destroy(gameObject);
           }    

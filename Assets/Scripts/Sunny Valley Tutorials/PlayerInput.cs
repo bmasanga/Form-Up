@@ -58,6 +58,7 @@ public class PlayerInput : MonoBehaviour
     private void OnLookPerformed(InputAction.CallbackContext context)
     {
         OnLookInput?.Invoke(context.ReadValue<Vector2>());
+
     }
 
 

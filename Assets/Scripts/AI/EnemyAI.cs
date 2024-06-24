@@ -41,6 +41,12 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] ParticleSystem rightThrustEffect;
     [SerializeField] ParticleSystem leftThrustEffect;
 
+    [Header("Weaon Settings")]
+    [SerializeField] GameObject projectilePrefab;
+    [SerializeField] float projectileSpeed = 10f;
+    [SerializeField] float projectileLifetime = 5f;
+
+
     //Inputs sent from the Enemy AI to the Enemy controller
     // public UnityEvent<Vector2> OnMoveInput;
     // public UnityEvent<Vector2> OnLookInput;
@@ -118,7 +124,7 @@ public class EnemyAI : MonoBehaviour
             {
                 //Attack logic
                 moveInput = Vector2.zero;
-                //OnFireInput?.Invoke();
+                Fire();
                 yield return new WaitForSeconds(attackDelay);
                 StartCoroutine(ChaseAndAttack());
             }
@@ -126,7 +132,7 @@ public class EnemyAI : MonoBehaviour
             {
                 //Chase logic
                 moveInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aiData);
-                Debug.Log("Chasing - moveInput: " + moveInput);
+                //Debug.Log("Chasing - moveInput: " + moveInput);
                 yield return new WaitForSeconds(aiUpdateDelay);
                 StartCoroutine(ChaseAndAttack());
             }
@@ -191,5 +197,22 @@ public class EnemyAI : MonoBehaviour
             leftThrustEffect.Stop();
             rightThrustEffect.Stop();
         }
+    }
+
+    void Fire()
+    {
+            GameObject projectileInstance = Instantiate(projectilePrefab, transform.position, transform.rotation);
+            Rigidbody2D rigidBody = projectileInstance.GetComponent<Rigidbody2D>();
+            //Debug.Log("currentHeat: " + currentHeat);
+            if (rigidBody != null)
+            {
+                // Calculate the force vector
+                Vector2 force = transform.up * projectileSpeed;
+
+                // Apply the impulse force to the bullet's Rigidbody2D
+                rigidBody.AddForce(force, ForceMode2D.Impulse);
+            }
+            
+            Destroy(projectileInstance, projectileLifetime);
     }
 }

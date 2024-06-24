@@ -44,6 +44,9 @@ TagManager:
   - name: Background
     uniqueID: 3713419689
     locked: 0
+  - name: Clouds
+    uniqueID: 2281912231
+    locked: 0
   - name: Obstacle
     uniqueID: 2710372469
     locked: 0
@@ -53,15 +56,12 @@ TagManager:
   - name: Player Projectile
     uniqueID: 3120929081
     locked: 0
-  - name: Particle
-    uniqueID: 642656039
-    locked: 0
   - name: Enemy
     uniqueID: 1907893191
     locked: 0
   - name: Player
     uniqueID: 3290700445
     locked: 0
-  - name: Clouds
-    uniqueID: 2281912231
+  - name: Particle
+    uniqueID: 642656039
     locked: 0

@@ -68,7 +68,7 @@ public class AgentMover : MonoBehaviour
 
             
             rb2d.AddForce(thrustDirection * thrustForce.magnitude, ForceMode2D.Force);
-            
+
         }
         else
         {
