@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class SeekBehavior : SteeringBehavior
+public class SeekBehaviour : SteeringBehaviour
 {
     [SerializeField]
     private float targetRechedThreshold = 0.5f;

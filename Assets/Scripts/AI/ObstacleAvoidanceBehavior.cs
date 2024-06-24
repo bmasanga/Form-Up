@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleAvoidanceBehavior : SteeringBehavior
+public class ObstacleAvoidanceBehaviour : SteeringBehaviour
 {
     [SerializeField]
     private float radius = 2f, agentColliderSize = 0.6f;

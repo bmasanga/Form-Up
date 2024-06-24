@@ -45,14 +45,14 @@ public class Agent : MonoBehaviour
             playerInput.OnFireCancel.AddListener(OnFireCanceled);
         }
         // Subscribing to events from EnemyAI
-        EnemyAI enemyAI = GetComponent<EnemyAI>();
-        if (enemyAI != null)
-        {
-            enemyAI.OnMoveInput.AddListener(OnMovePerformed);
-            enemyAI.OnLookInput.AddListener(OnLookPerformed);
-            enemyAI.OnFireInput.AddListener(OnFirePerformed);
-            enemyAI.OnFireCancel.AddListener(OnFireCanceled);
-        }
+        // EnemyAI enemyAI = GetComponent<EnemyAI>();
+        // if (enemyAI != null)
+        // {
+        //     enemyAI.OnMoveInput.AddListener(OnMovePerformed);
+        //     enemyAI.OnLookInput.AddListener(OnLookPerformed);
+        //     enemyAI.OnFireInput.AddListener(OnFirePerformed);
+        //     enemyAI.OnFireCancel.AddListener(OnFireCanceled);
+        // }
     }
 
     private void OnDisable()
@@ -66,14 +66,14 @@ public class Agent : MonoBehaviour
             playerInput.OnFireCancel.RemoveListener(OnFireCanceled);
         }
         // Unsubscribing from events from EnemyAI
-        EnemyAI enemyAI = GetComponent<EnemyAI>();
-        if (enemyAI != null)
-        {
-            enemyAI.OnMoveInput.RemoveListener(OnMovePerformed);
-            enemyAI.OnLookInput.RemoveListener(OnLookPerformed);
-            enemyAI.OnFireInput.RemoveListener(OnFirePerformed);
-            enemyAI.OnFireCancel.RemoveListener(OnFireCanceled);
-        }
+        // EnemyAI enemyAI = GetComponent<EnemyAI>();
+        // if (enemyAI != null)
+        // {
+        //     enemyAI.OnMoveInput.RemoveListener(OnMovePerformed);
+        //     enemyAI.OnLookInput.RemoveListener(OnLookPerformed);
+        //     enemyAI.OnFireInput.RemoveListener(OnFirePerformed);
+        //     enemyAI.OnFireCancel.RemoveListener(OnFireCanceled);
+        // }
     }
 
     private void Update()
