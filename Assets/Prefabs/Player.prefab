@@ -19632,7 +19632,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dff3ac276f743cc88c6856ec5f34b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  contollerDeadzone: 0.1
   rotationSpeed: 200
+  isGamepad: 0
   shooter: {fileID: 5928908281702880101}
 --- !u!114 &914013672456023304
 MonoBehaviour:
@@ -24739,6 +24741,10 @@ PrefabInstance:
     - target: {fileID: 1544063463173057629, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544063463173057629, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7069700041925981182, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
       propertyPath: m_Layer
