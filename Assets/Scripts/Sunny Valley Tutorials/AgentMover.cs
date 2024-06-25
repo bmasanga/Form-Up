@@ -48,23 +48,40 @@ public class AgentMover : MonoBehaviour
             {
                 thrustForce += Vector2.up * forwardThrustSpeed * moveInput.y;
                 fowardThrustEffect.Play();
+                backwardThrustEffect1.Stop();
+                backwardThrustEffect2.Stop();
             }
             if (moveInput.y < 0)
             {
                 thrustForce += Vector2.down * backwardThrustSpeed * Mathf.Abs(moveInput.y);
                 backwardThrustEffect1.Play();
                 backwardThrustEffect2.Play();
+                fowardThrustEffect.Stop();
             }    
             if (moveInput.x < 0)
             {
                 thrustForce += Vector2.left * leftThrustSpeed * Mathf.Abs(moveInput.x);
                 leftThrustEffect.Play();
+                rightThrustEffect.Stop();
             }
             if (moveInput.x > 0)
             {
                 thrustForce += Vector2.right * rightThrustSpeed * moveInput.x;
                 rightThrustEffect.Play();
+                leftThrustEffect.Stop();
             }
+            if (moveInput.y == 0)
+            {
+                fowardThrustEffect.Stop();
+                backwardThrustEffect1.Stop();
+                backwardThrustEffect2.Stop();
+            }
+            if (moveInput.x == 0)
+            {
+                rightThrustEffect.Stop();
+                leftThrustEffect.Stop();
+            }
+            
 
             
             rb2d.AddForce(thrustDirection * thrustForce.magnitude, ForceMode2D.Force);
