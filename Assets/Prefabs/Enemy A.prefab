@@ -9751,7 +9751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4133bd4ce714996bd112429612dd91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetRechedThreshold: 0.5
+  targetReachedThreshold: 0.5
   showGizmo: 1
 --- !u!1 &2367852734438781641
 GameObject:

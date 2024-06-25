@@ -19564,7 +19564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0c56f1f836b4422c89778395b34048c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 100
   currentHealth: 0
   hitEffect: {fileID: 5138278239686909396, guid: 9b39e3344caeb4fe38610717efaca702, type: 3}
   shield: {fileID: 1029674234296942008}
