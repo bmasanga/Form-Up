@@ -1,13 +1,19 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(PlayerInput))]
 
 public class Agent : MonoBehaviour
 {
+    [SerializeField] float contollerDeadzone = 0.1f;
+
     [SerializeField] float rotationSpeed = 200f;
 
-    [Header("Shooter")]
+    [SerializeField] bool isGamepad;
+
     [SerializeField] Shooter shooter;
 
     AgentMover agentMover;
@@ -94,17 +100,31 @@ public class Agent : MonoBehaviour
 
     void RotateTowardPointer()
     {
-        Vector3 mouseScreenPosition = new Vector3(lookInput.x, lookInput.y, Camera.main.nearClipPlane);
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
-        Vector3 direction = mouseWorldPosition - transform.position;
-        direction.z = 0f;
-
-        if (direction.magnitude > 0.1f)
+        if (Gamepad.current != null) 
         {
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-            Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            if (Mathf.Abs(Gamepad.current.rightStick.ReadValue().magnitude) > contollerDeadzone)
+            {
+                // Use gamepad right stick input for rotation
+                Vector2 gamepadInput = Gamepad.current.rightStick.ReadValue();
+                float angle = Mathf.Atan2(gamepadInput.y, gamepadInput.x) * Mathf.Rad2Deg - 90f;
+                Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
         }
+        else
+        {
+            Vector3 mouseScreenPosition = new Vector3(lookInput.x, lookInput.y, Camera.main.nearClipPlane);
+            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
+            Vector3 direction = mouseWorldPosition - transform.position;
+            direction.z = 0f;
+
+            if (direction.magnitude > 0.1f)
+            {
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+                Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
+        }    
     }
 
     public void OnFirePerformed()
@@ -117,4 +137,5 @@ public class Agent : MonoBehaviour
     {
         shooter.isFiring = false;
     }
+
 }

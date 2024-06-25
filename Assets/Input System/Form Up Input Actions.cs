@@ -227,7 +227,7 @@ public partial class @FormUpInputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Pen>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -304,7 +304,7 @@ public partial class @FormUpInputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Pen>/tip"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
