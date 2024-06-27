@@ -12,10 +12,11 @@ public class Shield : MonoBehaviour
     [SerializeField] float activeDelayTime = 5f;
     [SerializeField] float deactivatedDelayTime = 10f;
     [SerializeField] SpriteRenderer shieldSprite;
-    float residualDamage;
+    float residualDamage = 0f;
 
     Collider2D shieldCollider;
     Coroutine regenCoroutine;
+    Health health;
 
 
 
@@ -23,22 +24,10 @@ public class Shield : MonoBehaviour
     {
         currentHP = maxHP;
         shieldCollider = GetComponent<Collider2D>();
+        health = GetComponentInParent<Health>();
     }
 
-
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        DamageDealer damageDealer = other.GetComponent<DamageDealer>();
-
-        if (damageDealer != null)
-        {
-            TakeDamage(damageDealer.GetDamage());
-            damageDealer.Hit();
-        }        
-    } 
-
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         if (damage > currentHP)
         {
@@ -48,8 +37,7 @@ public class Shield : MonoBehaviour
         {
             residualDamage = 0f;
         }   
-        currentHP -= damage;
-        currentHP = Mathf.Max(currentHP, 0f);
+        
 
         if (regenCoroutine != null)
         {
@@ -60,12 +48,15 @@ public class Shield : MonoBehaviour
         {
             DeactivateShield();
             regenCoroutine = StartCoroutine(RegenShield(deactivatedDelayTime));
-
         }
         else
         {
             regenCoroutine = StartCoroutine(RegenShield(activeDelayTime));
         }
+        
+        currentHP -= damage;
+        currentHP = Mathf.Max(currentHP, 0f);
+        HandleResidualDamage();
     }
 
     void DeactivateShield()
@@ -98,6 +89,13 @@ public class Shield : MonoBehaviour
         shieldCollider.enabled = true;
         shieldSprite.enabled = true;
     }
+
+    void HandleResidualDamage()
+    {
+        health.TakeDamage(residualDamage);
+        ResetResidualDamage();
+    }
+
     
     
     public bool GetisActive()

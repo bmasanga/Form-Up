@@ -19820,6 +19820,7 @@ GameObject:
   - component: {fileID: 9131087364969811978}
   - component: {fileID: 7717704379166231931}
   - component: {fileID: 4237000937189311021}
+  - component: {fileID: 7602757180075752461}
   m_Layer: 9
   m_Name: Enemy A
   m_TagString: Untagged
@@ -19923,7 +19924,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   currentHealth: 0
-  hitEffect: {fileID: 5138278239686909396, guid: 9b39e3344caeb4fe38610717efaca702, type: 3}
   shield: {fileID: 7354417235490968610}
   applyCameraShake: 0
 --- !u!114 &7717704379166231931
@@ -19978,6 +19978,20 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3934847837996280472, guid: 10c59909c56124d4f85cb1cddf60a648, type: 3}
   projectileSpeed: 30
   projectileLifetime: 5
+--- !u!114 &7602757180075752461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7757009608851383827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea4285a50340401990dc9d8850a75be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  hitEffect: {fileID: 5138278239686909396, guid: 9b39e3344caeb4fe38610717efaca702, type: 3}
 --- !u!1 &7873514522378017584
 GameObject:
   m_ObjectHideFlags: 0
