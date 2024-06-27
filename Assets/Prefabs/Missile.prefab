@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 1904111303520539704}
   - component: {fileID: 8340491355083315949}
   - component: {fileID: 7745240093190062999}
-  - component: {fileID: 3316704326148823132}
   m_Layer: 8
   m_Name: Missile
   m_TagString: Untagged
@@ -200,18 +199,6 @@ MonoBehaviour:
   rotateSpeed: 200
   explosionEffect: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
   particleSystem: {fileID: 4796377723672381763}
---- !u!114 &3316704326148823132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6478900391279303909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 751316de206c344508206798ba90b46f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   damage: 100
 --- !u!1 &7721088875037503872
 GameObject:

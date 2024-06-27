@@ -8,17 +8,18 @@ using UnityEngine;
 public class HomingProjectile : MonoBehaviour
 {
     [SerializeField] Transform target;
-    [SerializeField] float speed = 5f;
-    [SerializeField] float rotateSpeed = 200f;
     [SerializeField] GameObject explosionEffect;
     [SerializeField] new ParticleSystem particleSystem;
+    [SerializeField] float speed = 5f;
+    [SerializeField] float rotateSpeed = 200f;
+    [SerializeField] float damage = 100f;
 
     Rigidbody2D rb2d;
     
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        //target = GameObject.FindGameObjectWithTag("MissileTarget").transform;
+        target = GameObject.FindGameObjectWithTag("MissileTarget").transform;
     }
 
     void FixedUpdate()
@@ -34,11 +35,18 @@ public class HomingProjectile : MonoBehaviour
         rb2d.velocity = transform.up * speed;
     }
 
-    void OnTriggerEnter2D()
+    void OnTriggerEnter2D(Collider2D other)
     {
         Instantiate(explosionEffect, transform.position, transform.rotation);
         DetachParticles();
-        Destroy(gameObject);
+
+        Shield shield = other.GetComponent<Shield>();
+        if (shield != null)
+        {
+            shield.TakeDamage(damage);
+        }
+
+          Destroy(gameObject);
     }
 
     void DetachParticles()

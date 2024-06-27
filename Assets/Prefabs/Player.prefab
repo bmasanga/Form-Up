@@ -19444,6 +19444,7 @@ Transform:
   m_Children:
   - {fileID: 5535471190025871529}
   - {fileID: 5545434195098981715}
+  - {fileID: 3570119129146209626}
   - {fileID: 1587097368647222942}
   - {fileID: 7083506608087062838}
   - {fileID: 3123725280359371665}
@@ -19451,7 +19452,6 @@ Transform:
   - {fileID: 9097356577329281346}
   - {fileID: 5105988984276493351}
   - {fileID: 3834728477903682030}
-  - {fileID: 3570119129146209626}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &3610523748722844369
@@ -19765,7 +19765,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3570119129146209626}
-  - component: {fileID: 3671780821826201534}
+  - component: {fileID: 476154111701886101}
   m_Layer: 0
   m_Name: Missile Launcher
   m_TagString: Untagged
@@ -19788,7 +19788,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6020625239912050404}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3671780821826201534
+--- !u!114 &476154111701886101
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19800,6 +19800,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7785ea2bcd514452ca2173b0727c0d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missilePrefab: {fileID: 6478900391279303909, guid: 2132c0157bc6b415c91d360f77cd8487, type: 3}
+  weaponActive: 1
+  maxAmmo: 3
+  currentAmmo: 0
+  maxHeat: 10
+  heatPerShot: 10
+  normalCooldownRate: 1
+  overheatedCooldownRate: 0.5
 --- !u!1 &6602694081839849784
 GameObject:
   m_ObjectHideFlags: 0
