@@ -24,10 +24,8 @@ public class Cannon : MonoBehaviour
     [SerializeField] float currentHeat = 0f;
     [SerializeField] bool overheated = false;
 
-    [Header("AI")]
-    [SerializeField] bool autoFire;
-
-    [HideInInspector] public bool isFiring;
+    Agent agent;
+    bool isfiring;
 
     Coroutine firingCoroutine;
     //AudioPlayer audioPlayer;
@@ -35,19 +33,21 @@ public class Cannon : MonoBehaviour
     void Awake()
     {
         //audioPlayer = FindObjectOfType<AudioPlayer>();
-    }
-    
-    void Start()
-    {
-        if (autoFire)
+        agent = GetComponentInParent<Agent>();
+        if (agent == null)
         {
-            isFiring = true;
+            Debug.LogError("Agent component not found on parent.");
         }
     }
-
+    
     void Update()
     {
         DissipateHeat();
+        if(agent != null)
+        {
+            isfiring = agent.GetisFiring();
+        }    
+    
     }
     
     void FixedUpdate()
@@ -57,11 +57,11 @@ public class Cannon : MonoBehaviour
 
     void Fire()
     {
-        if (isFiring && firingCoroutine == null)
+        if (isfiring && firingCoroutine == null)
         {
             firingCoroutine = StartCoroutine(FireContinously());
         }
-        else if (!isFiring && firingCoroutine != null)
+        else if (!isfiring && firingCoroutine != null)
         {
             StopCoroutine(firingCoroutine);
             firingCoroutine = null;

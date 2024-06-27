@@ -14,8 +14,7 @@ public class Agent : MonoBehaviour
 
     [SerializeField] bool isGamepad;
 
-    [SerializeField] Cannon cannon;
-
+    bool isFiring = false;
     bool isActioning;
 
     AgentMover agentMover;
@@ -136,12 +135,12 @@ public class Agent : MonoBehaviour
     public void OnFirePerformed()
     {
         if (!isAlive) return;
-        cannon.isFiring = true;
+        isFiring = true;
     }
 
     public void OnFireCanceled()
     {
-        cannon.isFiring = false;
+        isFiring = false;
     }
 
     public void OnActionPerformed()
@@ -155,4 +154,13 @@ public class Agent : MonoBehaviour
         isActioning = false;
     }
 
+    public bool GetisFiring()
+    {
+        return isFiring;
+    }
+
+    public bool GetisActioning()
+    {
+        return isActioning;
+    }
 }
