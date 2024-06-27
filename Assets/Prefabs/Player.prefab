@@ -19635,7 +19635,7 @@ MonoBehaviour:
   contollerDeadzone: 0.1
   rotationSpeed: 200
   isGamepad: 0
-  shooter: {fileID: 5928908281702880101}
+  cannon: {fileID: 1293124784745471748}
 --- !u!114 &914013672456023304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19708,9 +19708,40 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnActionInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1848056650609260082}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: OnActionPerformed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnActionCancel:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1848056650609260082}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: OnActionCanceled
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   move: {fileID: -3837979434965878655, guid: 82942681fc2104b23980c7b89c2db655, type: 3}
   look: {fileID: -5320315507278476564, guid: 82942681fc2104b23980c7b89c2db655, type: 3}
   fire: {fileID: 6637784419796003697, guid: 82942681fc2104b23980c7b89c2db655, type: 3}
+  action: {fileID: 7064181859609908409, guid: 82942681fc2104b23980c7b89c2db655, type: 3}
 --- !u!1 &6602694081839849784
 GameObject:
   m_ObjectHideFlags: 0
@@ -24835,6 +24866,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5487642483872530544, guid: c64c5c048474c4c2f898af0a0925b624, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 675338409100015005, guid: 9f91a0cb4c61f4525a3f1cba5ae26544, type: 3}
     - target: {fileID: 6315687250203673750, guid: c64c5c048474c4c2f898af0a0925b624, type: 3}
       propertyPath: m_Name
       value: Blaster Canon
@@ -24844,14 +24879,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c64c5c048474c4c2f898af0a0925b624, type: 3}
---- !u!4 &5545434195098981715 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1238288569336629799, guid: c64c5c048474c4c2f898af0a0925b624, type: 3}
-  m_PrefabInstance: {fileID: 6762752838936387444}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5928908281702880101 stripped
+--- !u!114 &1293124784745471748 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1125241622445214737, guid: c64c5c048474c4c2f898af0a0925b624, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5487642483872530544, guid: c64c5c048474c4c2f898af0a0925b624, type: 3}
   m_PrefabInstance: {fileID: 6762752838936387444}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -24860,3 +24890,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1aae7dc0245f49a4a32b63413572e0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &5545434195098981715 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1238288569336629799, guid: c64c5c048474c4c2f898af0a0925b624, type: 3}
+  m_PrefabInstance: {fileID: 6762752838936387444}
+  m_PrefabAsset: {fileID: 0}

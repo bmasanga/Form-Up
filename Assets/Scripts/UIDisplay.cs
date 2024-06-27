@@ -25,7 +25,7 @@ public class UIDisplay : MonoBehaviour
     [SerializeField] TextMeshProUGUI healthStatus;
     
     [Header("Cooldown Meter")]
-    [SerializeField] Shooter shooter;
+    [SerializeField] Cannon cannon;
     [SerializeField] Slider cooldownMeter;
     [SerializeField] Image cooldownMeterFillImage;
     [SerializeField] TextMeshProUGUI heatStatus;
@@ -43,7 +43,7 @@ public class UIDisplay : MonoBehaviour
 
     void Start()
     {
-        cooldownMeter.maxValue = shooter.GetMaxHeat();
+        cooldownMeter.maxValue = cannon.GetMaxHeat();
         shieldMeter.maxValue = shield.GetMaxHP();
         healthMeter.maxValue = health.GetMaxHealth();
     }
@@ -53,7 +53,7 @@ public class UIDisplay : MonoBehaviour
     {
         shieldMeter.value = shield.GetCurrentHP();
         healthMeter.value = health.GetCurrentHealth();
-        cooldownMeter.value = shooter.GetCurrentHeat();
+        cooldownMeter.value = cannon.GetCurrentHeat();
         
         SetShieldStatus();
         SetHealthStatus();
@@ -103,7 +103,7 @@ public class UIDisplay : MonoBehaviour
     
     void SetCooldownStatus()
     {
-        bool overheatedState = shooter.GetOverheatedState();
+        bool overheatedState = cannon.GetOverheatedState();
 
         if (overheatedState)
         {

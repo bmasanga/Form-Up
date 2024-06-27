@@ -14,7 +14,9 @@ public class Agent : MonoBehaviour
 
     [SerializeField] bool isGamepad;
 
-    [SerializeField] Shooter shooter;
+    [SerializeField] Cannon cannon;
+
+    bool isActioning;
 
     AgentMover agentMover;
 
@@ -49,6 +51,8 @@ public class Agent : MonoBehaviour
             playerInput.OnLookInput.AddListener(OnLookPerformed);
             playerInput.OnFireInput.AddListener(OnFirePerformed);
             playerInput.OnFireCancel.AddListener(OnFireCanceled);
+            playerInput.OnActionInput.AddListener(OnActionPerformed);
+            playerInput.OnActionCancel.AddListener(OnActionCanceled);
         }
         // Subscribing to events from EnemyAI
         // EnemyAI enemyAI = GetComponent<EnemyAI>();
@@ -70,6 +74,8 @@ public class Agent : MonoBehaviour
             playerInput.OnLookInput.RemoveListener(OnLookPerformed);
             playerInput.OnFireInput.RemoveListener(OnFirePerformed);
             playerInput.OnFireCancel.RemoveListener(OnFireCanceled);
+            playerInput.OnActionInput.RemoveListener(OnActionPerformed);
+            playerInput.OnActionCancel.RemoveListener(OnActionCanceled);
         }
         // Unsubscribing from events from EnemyAI
         // EnemyAI enemyAI = GetComponent<EnemyAI>();
@@ -130,12 +136,23 @@ public class Agent : MonoBehaviour
     public void OnFirePerformed()
     {
         if (!isAlive) return;
-        shooter.isFiring = true;
+        cannon.isFiring = true;
     }
 
     public void OnFireCanceled()
     {
-        shooter.isFiring = false;
+        cannon.isFiring = false;
+    }
+
+    public void OnActionPerformed()
+    {
+        if (!isAlive) return;
+        isActioning = true;
+    }
+
+    public void OnActionCanceled()
+    {
+        isActioning = false;
     }
 
 }

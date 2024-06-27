@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1238288569336629799}
-  - component: {fileID: 1125241622445214737}
+  - component: {fileID: 5487642483872530544}
   m_Layer: 7
   m_Name: Blaster Canon
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1125241622445214737
+--- !u!114 &5487642483872530544
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,14 +47,14 @@ MonoBehaviour:
   projectilePrefab: {fileID: 675338409100015005, guid: 9f91a0cb4c61f4525a3f1cba5ae26544, type: 3}
   projectileSpeed: 30
   projectileLifetime: 5
-  baseFiringRate: 0.25
+  baseFiringRate: 0.3
   firingRateVariance: 0
   minimumFiringRate: 0.2
   weaponActive: 1
   maxHeat: 10
-  heatPerShot: 1
-  normalCooldownRate: 1
-  overheatedCooldownRate: 0.5
+  heatPerShot: 2
+  normalCooldownRate: 2
+  overheatedCooldownRate: 1
   currentHeat: 0
   overheated: 0
   autoFire: 0

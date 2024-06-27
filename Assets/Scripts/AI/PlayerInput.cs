@@ -13,8 +13,10 @@ public class PlayerInput : MonoBehaviour
     public UnityEvent<Vector2> OnLookInput;
     public UnityEvent OnFireInput;
     public UnityEvent OnFireCancel;
+    public UnityEvent OnActionInput;
+    public UnityEvent OnActionCancel;
 
-    [SerializeField] InputActionReference move, look, fire; 
+    [SerializeField] InputActionReference move, look, fire, action; 
 
     private void OnEnable()
     {
@@ -25,6 +27,9 @@ public class PlayerInput : MonoBehaviour
 
         fire.action.performed += OnFirePerformed;
         fire.action.canceled += OnFireCanceled;
+
+        action.action.performed += OnActionPerformed;
+        action.action.canceled += OnActionCanceled;
 
     } 
 
@@ -37,6 +42,9 @@ public class PlayerInput : MonoBehaviour
 
         fire.action.performed -= OnFirePerformed;
         fire.action.canceled -= OnFireCanceled;
+
+        action.action.performed -= OnActionPerformed;
+        action.action.canceled -= OnActionCanceled;
     }
     
     void Update()
@@ -70,5 +78,15 @@ public class PlayerInput : MonoBehaviour
     private void OnFireCanceled(InputAction.CallbackContext context)
     {
         OnFireCancel?.Invoke();
+    }
+
+    private void OnActionPerformed(InputAction.CallbackContext context)
+    {
+        OnActionInput?.Invoke();
+    }
+
+    private void OnActionCanceled(InputAction.CallbackContext context)
+    {
+        OnActionCancel?.Invoke();
     }
 }

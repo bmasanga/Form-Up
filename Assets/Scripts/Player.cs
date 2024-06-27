@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] ParticleSystem leftThrustEffect;
 
     [Header("Shooter")]
-    [SerializeField] Shooter shooter;
+    [SerializeField] Cannon cannon;
 
     FormUpInputActions controls;
     Rigidbody2D playerRigidBody;
@@ -95,13 +95,13 @@ public class Player : MonoBehaviour
     void OnFirePerformed(InputAction.CallbackContext context)
     {
         if (!isAlive) return;
-        shooter.isFiring = context.ReadValue<float>() > 0;
+        cannon.isFiring = context.ReadValue<float>() > 0;
         //Debug.Log("firing");
     }
 
     void OnFireCancelled(InputAction.CallbackContext context)
     {
-        shooter.isFiring = false;
+        cannon.isFiring = false;
     }
 
     void Thrust()
