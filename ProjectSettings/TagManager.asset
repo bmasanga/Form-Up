@@ -19,7 +19,7 @@ TagManager:
   - Enemy Projectile
   - Particle
   - Obstacle
-  - 
+  - Targeting
   - 
   - 
   - 
@@ -51,6 +51,9 @@ TagManager:
   - name: Obstacle
     uniqueID: 2710372469
     locked: 0
+  - name: Particle
+    uniqueID: 642656039
+    locked: 0
   - name: Enemy Projecitle
     uniqueID: 3663384829
     locked: 0
@@ -62,7 +65,4 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3290700445
-    locked: 0
-  - name: Particle
-    uniqueID: 642656039
     locked: 0

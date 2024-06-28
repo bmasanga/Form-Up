@@ -19,11 +19,12 @@ public class HomingProjectile : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        target = GameObject.FindGameObjectWithTag("MissileTarget").transform;
     }
 
     void FixedUpdate()
     {
+        if (target == null) return;
+        
         Vector2 direction = (Vector2)target.position - rb2d.position;
         
         direction.Normalize();
@@ -33,6 +34,14 @@ public class HomingProjectile : MonoBehaviour
         rb2d.angularVelocity = -rotateAmount * rotateSpeed;
 
         rb2d.velocity = transform.up * speed;
+    }
+
+    public void SetTarget(GameObject lockedTarget)
+    {
+        if (lockedTarget != null)
+        {
+        target = lockedTarget.transform;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)

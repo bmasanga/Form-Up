@@ -5,8 +5,6 @@ using UnityEngine;
 public class Launcher : MonoBehaviour
 {
     [SerializeField] GameObject missilePrefab;
-
-    [SerializeField] bool isAmmoEmpty = false;
     [SerializeField] int maxAmmo = 3;
     [SerializeField] int currentAmmo;
     [SerializeField] float missileLifetime = 5f; 
@@ -16,14 +14,18 @@ public class Launcher : MonoBehaviour
     [SerializeField] float currentReloadTime;
 
     Agent agent;
-    bool isActioning;
     Coroutine launchCoroutine;
+    TargetingSystem targetingSystem;
+
+    bool isActioning;
     bool isReloading = false;
+    bool isAmmoEmpty = false;
 
     void Awake()
     {
         agent = GetComponentInParent<Agent>();
         currentAmmo = maxAmmo;
+        targetingSystem = GetComponentInChildren<TargetingSystem>();
     }
 
     // Update is called once per frame
@@ -33,23 +35,31 @@ public class Launcher : MonoBehaviour
         {
             isActioning = agent.GetisActioning();
         }
-        if (isActioning && launchCoroutine == null && !isReloading)
+        if (isActioning 
+        && launchCoroutine == null 
+        && !isReloading 
+        && targetingSystem != null 
+        && targetingSystem.GetLockedTarget() != null)
         {
-            launchCoroutine = StartCoroutine(Launch());
+            Debug.Log("Attempting to launch missile");
+            launchCoroutine = StartCoroutine(Launch(targetingSystem.GetLockedTarget()));
         }
     }
 
-    void FixedUpdate()
-    {
-        Launch();
-    }
 
-    IEnumerator Launch()
+    IEnumerator Launch(GameObject target)
     {
         if (currentAmmo > 0)
         {
             currentAmmo --;
             GameObject missileInstance = Instantiate(missilePrefab, transform.position, transform.rotation);
+            HomingProjectile missile = missileInstance.GetComponent<HomingProjectile>();
+            if (missile != null)
+            {
+                missile.SetTarget(target);
+                Debug.Log("Missile launched at target: " + target.name);
+
+            }
         
             Destroy(missileInstance, missileLifetime);
 
@@ -64,16 +74,15 @@ public class Launcher : MonoBehaviour
             
             isReloading = false;
             launchCoroutine = null;
+
+            if(currentAmmo <= 0)
+            {
+                isAmmoEmpty = true;
+            }
         }
+        targetingSystem.ResetLockedTarget();
     }
 
-    void EmptyAmmo()
-    {
-        if(currentAmmo <= 0)
-        {
-            isAmmoEmpty = true;
-        }
-    }
 
     public float GetCurrentReloadTime()
     {
@@ -94,7 +103,6 @@ public class Launcher : MonoBehaviour
     {
         return isReloading;
     }
-    
     
     public bool GetIsAmmoEmpty()
     {
