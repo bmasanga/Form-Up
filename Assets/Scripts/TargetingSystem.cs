@@ -9,14 +9,15 @@ public class TargetingSystem : MonoBehaviour
     [SerializeField] GameObject lockedTarget = null;
 
     Dictionary<GameObject, float> potentialTargets = new Dictionary<GameObject, float>();
-    SpriteRenderer radar;
+    TargetingLaser targetingLaser;
+    
     float timeSinceExit = 0f;
     bool targetExited = false;
 
     void Awake()
     {
-        radar = GetComponent<SpriteRenderer>();
-        radar.color = Color.green;
+        targetingLaser = GetComponentInChildren<TargetingLaser>();
+        targetingLaser.SetLaserColor(Color.green);
     }
     
     void OnTriggerEnter2D(Collider2D other)
@@ -31,7 +32,7 @@ public class TargetingSystem : MonoBehaviour
             if (!potentialTargets.ContainsKey(other.gameObject))
             {
                 potentialTargets.Add(other.gameObject, 0f);
-                radar.color = Color.yellow;
+                targetingLaser.SetLaserColor(Color.yellow);
             }
         }
     }
@@ -53,7 +54,7 @@ public class TargetingSystem : MonoBehaviour
         }
         if (potentialTargets.Count == 0 && lockedTarget == null)
         {
-            radar.color = Color.green; // Ensure color is green when no targets are within the collider
+            targetingLaser.SetLaserColor(Color.green); // Ensure color is green when no targets are within the collider
         }
     }
 
@@ -70,7 +71,7 @@ public class TargetingSystem : MonoBehaviour
                 if (potentialTargets[target] >= targetLockTime)
                 {
                     lockedTarget = target;
-                    radar.color = Color.red;
+                    targetingLaser.SetLaserColor(Color.red);
                     Debug.Log("Target locked: " + lockedTarget.name);
                     break;
                 }
@@ -86,7 +87,7 @@ public class TargetingSystem : MonoBehaviour
             }
             if (lockedTarget == null && potentialTargets.Count > 0)
             {
-                radar.color = Color.yellow; // Change color to yellow if there are potential targets but none are locked
+                targetingLaser.SetLaserColor(Color.yellow); // Change color to yellow if there are potential targets but none are locked
             }
         }
         else if (targetExited)
@@ -95,7 +96,7 @@ public class TargetingSystem : MonoBehaviour
             if (timeSinceExit >= lockDurationAfterExit)
             {
                 lockedTarget = null;
-                radar.color = Color.green; // Change color to green when lock is reset
+                targetingLaser.SetLaserColor(Color.green); // Change color to green when lock is reset
                 targetExited = false;
             }
         }
@@ -110,6 +111,6 @@ public class TargetingSystem : MonoBehaviour
     public void ResetLockedTarget()
     {
         lockedTarget = null;
-        radar.color = Color.green;
+        targetingLaser.SetLaserColor(Color.green);
     }
 }
