@@ -32,7 +32,6 @@ public class TargetingSystem : MonoBehaviour
             if (!potentialTargets.ContainsKey(other.gameObject))
             {
                 potentialTargets.Add(other.gameObject, 0f);
-                targetingLaser.SetLaserColor(Color.yellow);
             }
         }
     }
@@ -54,7 +53,7 @@ public class TargetingSystem : MonoBehaviour
         }
         if (potentialTargets.Count == 0 && lockedTarget == null)
         {
-            targetingLaser.SetLaserColor(Color.green); // Ensure color is green when no targets are within the collider
+            ResetLockedTarget();
         }
     }
 
@@ -95,8 +94,7 @@ public class TargetingSystem : MonoBehaviour
             timeSinceExit += Time.deltaTime;
             if (timeSinceExit >= lockDurationAfterExit)
             {
-                lockedTarget = null;
-                targetingLaser.SetLaserColor(Color.green); // Change color to green when lock is reset
+                ResetLockedTarget();
                 targetExited = false;
             }
         }

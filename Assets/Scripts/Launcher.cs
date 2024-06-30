@@ -25,7 +25,12 @@ public class Launcher : MonoBehaviour
     {
         agent = GetComponentInParent<Agent>();
         currentAmmo = maxAmmo;
-        targetingSystem = GetComponentInChildren<TargetingSystem>();
+        targetingSystem = transform.parent.GetComponentInChildren<TargetingSystem>();
+
+        if (targetingSystem == null)
+        {
+            Debug.LogError("TargetingSystem not found in parent object.");
+        }    
     }
 
     // Update is called once per frame
@@ -58,6 +63,7 @@ public class Launcher : MonoBehaviour
             {
                 missile.SetTarget(target);
                 Debug.Log("Missile launched at target: " + target.name);
+                targetingSystem.ResetLockedTarget();
 
             }
         
