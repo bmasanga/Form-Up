@@ -15,7 +15,10 @@ public class Agent : MonoBehaviour
     [SerializeField] bool isGamepad;
 
     bool isFiring = false;
-    bool isActioning;
+    bool isActioning = false;
+    bool isTargeting = false;
+    bool isAlive = true;
+    bool isToggling = false;
 
     AgentMover agentMover;
 
@@ -32,8 +35,6 @@ public class Agent : MonoBehaviour
         get => _moveInput;
         set => _moveInput = value;
     }
-
-    bool isAlive = true;
 
     private void Awake()
     {
@@ -52,6 +53,10 @@ public class Agent : MonoBehaviour
             playerInput.OnFireCancel.AddListener(OnFireCanceled);
             playerInput.OnActionInput.AddListener(OnActionPerformed);
             playerInput.OnActionCancel.AddListener(OnActionCanceled);
+            playerInput.OnToggleInput.AddListener(OnTogglePerformed);
+            playerInput.OnToggleCancel.AddListener(OnToggleCanceled);
+            playerInput.OnTargetInput.AddListener(OnTargetPerformed);
+            playerInput.OnTargetCancel.AddListener(OnTargetCanceled);
         }
         // Subscribing to events from EnemyAI
         // EnemyAI enemyAI = GetComponent<EnemyAI>();
@@ -75,6 +80,10 @@ public class Agent : MonoBehaviour
             playerInput.OnFireCancel.RemoveListener(OnFireCanceled);
             playerInput.OnActionInput.RemoveListener(OnActionPerformed);
             playerInput.OnActionCancel.RemoveListener(OnActionCanceled);
+            playerInput.OnToggleInput.RemoveListener(OnTogglePerformed);
+            playerInput.OnToggleCancel.RemoveListener(OnToggleCanceled);
+            playerInput.OnTargetInput.RemoveListener(OnTargetPerformed);
+            playerInput.OnTargetCancel.RemoveListener(OnTargetCanceled);
         }
         // Unsubscribing from events from EnemyAI
         // EnemyAI enemyAI = GetComponent<EnemyAI>();
@@ -154,13 +163,45 @@ public class Agent : MonoBehaviour
         isActioning = false;
     }
 
-    public bool GetisFiring()
+    public void OnTogglePerformed()
+    {
+        if (!isAlive) return;
+        isToggling = true;
+    }
+
+    public void OnToggleCanceled()
+    {
+        isToggling = false;
+    }
+
+    public void OnTargetPerformed()
+    {
+        if (!isAlive) return;
+        isTargeting = true;
+    }
+
+    public void OnTargetCanceled()
+    {
+        isTargeting = false;
+    }
+
+    public bool GetIsFiring()
     {
         return isFiring;
     }
 
-    public bool GetisActioning()
+    public bool GetIsActioning()
     {
         return isActioning;
+    }
+
+    public bool GetIsToggling()
+    {
+        return isToggling;
+    }
+
+    public bool GetIsTargeting()
+    {
+        return isTargeting;
     }
 }

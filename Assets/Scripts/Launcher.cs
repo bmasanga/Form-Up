@@ -38,7 +38,7 @@ public class Launcher : MonoBehaviour
     {
         if (agent != null)
         {
-            isActioning = agent.GetisActioning();
+            isActioning = agent.GetIsActioning();
         }
         if (isActioning 
         && launchCoroutine == null 
@@ -63,8 +63,6 @@ public class Launcher : MonoBehaviour
             {
                 missile.SetTarget(target);
                 Debug.Log("Missile launched at target: " + target.name);
-                targetingSystem.ResetLockedTarget();
-
             }
         
             Destroy(missileInstance, missileLifetime);

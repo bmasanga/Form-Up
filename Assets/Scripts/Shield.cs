@@ -62,7 +62,7 @@ public class Shield : MonoBehaviour
     void DeactivateShield()
     {
         isActive = false;
-        shieldCollider.enabled = false;
+        //shieldCollider.enabled = false;
         shieldSprite.enabled = false;
     }
 
@@ -86,7 +86,7 @@ public class Shield : MonoBehaviour
     void ActivateShield()
     {
         isActive = true;
-        shieldCollider.enabled = true;
+        //shieldCollider.enabled = true;
         shieldSprite.enabled = true;
     }
 

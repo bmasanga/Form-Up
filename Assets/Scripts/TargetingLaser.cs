@@ -47,4 +47,9 @@ public class TargetingLaser : MonoBehaviour
         lineRenderer.endColor = color;
     }
 
+    public void SetLaserEnabled(bool enabled)
+    {
+        lineRenderer.enabled = enabled;
+    }
+
 }

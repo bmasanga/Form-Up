@@ -42,9 +42,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Switch Weapon",
+                    "name": "Toggle",
                     "type": "Button",
                     "id": "a0932e7c-d39b-4fa9-8a3b-6b99c922ea37",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Target",
+                    "type": "Button",
+                    "id": "80ae3e34-b7ec-460a-a20c-83807dd214a8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -308,7 +317,7 @@
                 {
                     "name": "",
                     "id": "3152fbb1-a06e-44f9-be5d-c778ab575038",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -334,7 +343,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Switch Weapon",
+                    "action": "Toggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -345,7 +354,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Switch Weapon",
+                    "action": "Toggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e2e7c6e9-82e3-4479-afcc-6ebefce12243",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Target",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b9760187-1bce-46a6-8ce8-74e2de838415",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Target",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

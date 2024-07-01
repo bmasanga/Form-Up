@@ -45,7 +45,7 @@ public class Cannon : MonoBehaviour
         DissipateHeat();
         if(agent != null)
         {
-            isfiring = agent.GetisFiring();
+            isfiring = agent.GetIsFiring();
         }    
     
     }

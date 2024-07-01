@@ -46,16 +46,22 @@ public class HomingProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Instantiate(explosionEffect, transform.position, transform.rotation);
-        DetachParticles();
-
         Shield shield = other.GetComponent<Shield>();
         if (shield != null)
         {
             shield.TakeDamage(damage);
         }
 
-          Destroy(gameObject);
+        HandleExplosion(0);
+    }
+
+    void HandleExplosion(float delay)
+    {
+        Instantiate(explosionEffect, transform.position, transform.rotation);
+
+        DetachParticles();
+
+        Destroy(gameObject);
     }
 
     void DetachParticles()

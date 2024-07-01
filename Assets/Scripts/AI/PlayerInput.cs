@@ -15,8 +15,13 @@ public class PlayerInput : MonoBehaviour
     public UnityEvent OnFireCancel;
     public UnityEvent OnActionInput;
     public UnityEvent OnActionCancel;
+    public UnityEvent OnToggleInput;
+    public UnityEvent OnToggleCancel;
+    public UnityEvent OnTargetInput;
+    public UnityEvent OnTargetCancel;
 
-    [SerializeField] InputActionReference move, look, fire, action; 
+
+    [SerializeField] InputActionReference move, look, fire, action, toggle, target; 
 
     private void OnEnable()
     {
@@ -31,6 +36,11 @@ public class PlayerInput : MonoBehaviour
         action.action.performed += OnActionPerformed;
         action.action.canceled += OnActionCanceled;
 
+        toggle.action.performed += OnTogglePerformed;
+        toggle.action.canceled += OnToggleCanceled;
+        
+        target.action.performed += OnTargetPerformed;
+        target.action.canceled += OnTargetCanceled;
     } 
 
     private void OnDisable()
@@ -45,13 +55,14 @@ public class PlayerInput : MonoBehaviour
 
         action.action.performed -= OnActionPerformed;
         action.action.canceled -= OnActionCanceled;
+
+        toggle.action.performed -= OnTogglePerformed;
+        toggle.action.canceled -= OnToggleCanceled;
+
+        target.action.performed -= OnTargetPerformed;
+        target.action.canceled -= OnTargetCanceled;
     }
     
-    void Update()
-    {
-        // OnMoveInput?.Invoke(move.action.ReadValue<Vector2>().normalized);
-        // OnLookInput?.Invoke(OnLookPerformed());
-    }
 
     private void OnMovePerformed(InputAction.CallbackContext context)
     {
@@ -68,7 +79,6 @@ public class PlayerInput : MonoBehaviour
         OnLookInput?.Invoke(context.ReadValue<Vector2>());
 
     }
-
 
     private void OnFirePerformed(InputAction.CallbackContext context)
     {
@@ -88,5 +98,25 @@ public class PlayerInput : MonoBehaviour
     private void OnActionCanceled(InputAction.CallbackContext context)
     {
         OnActionCancel?.Invoke();
+    }
+
+    private void OnTogglePerformed(InputAction.CallbackContext context)
+    {
+        OnToggleInput?.Invoke();
+    }
+
+    private void OnToggleCanceled(InputAction.CallbackContext context)
+    {
+        OnToggleCancel?.Invoke();
+    }
+
+    private void OnTargetPerformed(InputAction.CallbackContext context)
+    {
+        OnTargetInput?.Invoke();
+    }
+
+    private void OnTargetCanceled(InputAction.CallbackContext context)
+    {
+        OnTargetCancel?.Invoke();
     }
 }

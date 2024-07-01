@@ -9689,8 +9689,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.381, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5656068396112103343}
+  m_Children: []
   m_Father: {fileID: 6020625239912050404}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8582430885518577017
@@ -9709,7 +9708,7 @@ MonoBehaviour:
   maxAmmo: 10
   currentAmmo: 0
   missileLifetime: 5
-  maxReloadTime: 10
+  maxReloadTime: 5
   reloadRate: 1
   currentReloadTime: 0
 --- !u!1 &3035729070472387284
@@ -19495,6 +19494,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5535471190025871529}
+  - {fileID: 5656068396112103343}
   - {fileID: 5545434195098981715}
   - {fileID: 6966646953482310997}
   - {fileID: 1587097368647222942}
@@ -19790,10 +19790,72 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnToggleInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1848056650609260082}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: OnTogglePerformed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnToggleCancel:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1848056650609260082}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: OnToggleCanceled
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTargetInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1848056650609260082}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: OnTargetPerformed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTargetCancel:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1848056650609260082}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: OnTargetCanceled
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   move: {fileID: -3837979434965878655, guid: 82942681fc2104b23980c7b89c2db655, type: 3}
   look: {fileID: -5320315507278476564, guid: 82942681fc2104b23980c7b89c2db655, type: 3}
   fire: {fileID: 6637784419796003697, guid: 82942681fc2104b23980c7b89c2db655, type: 3}
   action: {fileID: 7064181859609908409, guid: 82942681fc2104b23980c7b89c2db655, type: 3}
+  toggle: {fileID: 6635648954335083371, guid: 82942681fc2104b23980c7b89c2db655, type: 3}
+  target: {fileID: 5808657142675727817, guid: 82942681fc2104b23980c7b89c2db655, type: 3}
 --- !u!114 &-4395405942174119068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24810,12 +24872,12 @@ Transform:
   m_GameObject: {fileID: 7996926945753136706}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.381, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1543980383395825842}
-  m_Father: {fileID: 6966646953482310997}
+  m_Father: {fileID: 6020625239912050404}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3688886534068602044
 MonoBehaviour:
@@ -24829,8 +24891,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee9e8538f1084f42b5042e1e9704e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLockTime: 2
-  lockDurationAfterExit: 3
+  targetLockTime: 1
+  lockDurationAfterExit: 1
   lockedTarget: {fileID: 0}
 --- !u!61 &8434361631993295017
 BoxCollider2D:
@@ -24864,7 +24926,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000000059604645, y: 4.8113356}
+  m_Offset: {x: -0.000000059604645, y: 5.827011}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -24875,7 +24937,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.94457, y: 9.610634}
+  m_Size: {x: 1.94457, y: 11.641985}
   m_EdgeRadius: 0
 --- !u!1 &8804955999239788644
 GameObject:
@@ -24953,7 +25015,7 @@ LineRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 10, z: 0}
+  - {x: 0, y: 12, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
@@ -25084,7 +25146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1544063463173057629, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1544063463173057629, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
       propertyPath: m_IsActive
@@ -25092,7 +25154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7069700041925981182, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

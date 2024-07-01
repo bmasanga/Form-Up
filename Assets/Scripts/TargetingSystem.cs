@@ -10,6 +10,7 @@ public class TargetingSystem : MonoBehaviour
 
     Dictionary<GameObject, float> potentialTargets = new Dictionary<GameObject, float>();
     TargetingLaser targetingLaser;
+    Agent agent;
     
     float timeSinceExit = 0f;
     bool targetExited = false;
@@ -18,26 +19,42 @@ public class TargetingSystem : MonoBehaviour
     {
         targetingLaser = GetComponentInChildren<TargetingLaser>();
         targetingLaser.SetLaserColor(Color.green);
+        agent = GetComponentInParent<Agent>();
     }
-    
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (lockedTarget != null)
-        {
-            return; // Ignore new entries if we already have a locked target
-        }
 
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (!agent.GetIsTargeting()) return; // Ignore if not targeting
+        
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            if (!potentialTargets.ContainsKey(other.gameObject))
+            if (lockedTarget == null)
             {
-                potentialTargets.Add(other.gameObject, 0f);
+                // Increment lock time for this target
+                if (potentialTargets.ContainsKey(other.gameObject))
+                {
+                    potentialTargets[other.gameObject] += Time.deltaTime;
+                }
+                else
+                {
+                    potentialTargets[other.gameObject] = 0f;
+                }
+
+                // Check if target lock time is reached
+                if (potentialTargets[other.gameObject] >= targetLockTime)
+                {
+                    lockedTarget = other.gameObject;
+                    targetingLaser.SetLaserColor(Color.red);
+                    Debug.Log("Target locked: " + lockedTarget.name);
+                }
             }
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
+        if (!agent.GetIsTargeting()) return; // Ignore if not targeting
+        
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             if (potentialTargets.ContainsKey(other.gameObject))
@@ -59,37 +76,19 @@ public class TargetingSystem : MonoBehaviour
 
     void Update()
     {
-        if (lockedTarget == null)
+        if (!agent.GetIsTargeting())
         {
-            List<GameObject> keys = new List<GameObject>(potentialTargets.Keys);
+            potentialTargets.Clear();
+            ResetLockedTarget();
+            targetingLaser.SetLaserEnabled(false);
+            return;
 
-            foreach (GameObject target in keys)
-            {
-                potentialTargets[target] += Time.deltaTime;
-
-                if (potentialTargets[target] >= targetLockTime)
-                {
-                    lockedTarget = target;
-                    targetingLaser.SetLaserColor(Color.red);
-                    Debug.Log("Target locked: " + lockedTarget.name);
-                    break;
-                }
-            }
-
-            // Clean up targets that left the collider
-            foreach (GameObject target in keys)
-            {
-                if (!target)
-                {
-                    potentialTargets.Remove(target);
-                }
-            }
-            if (lockedTarget == null && potentialTargets.Count > 0)
-            {
-                targetingLaser.SetLaserColor(Color.yellow); // Change color to yellow if there are potential targets but none are locked
-            }
         }
-        else if (targetExited)
+
+        targetingLaser.SetLaserEnabled(true);
+
+        // Handle target exiting logic
+        if (lockedTarget != null && targetExited)
         {
             timeSinceExit += Time.deltaTime;
             if (timeSinceExit >= lockDurationAfterExit)
@@ -99,6 +98,21 @@ public class TargetingSystem : MonoBehaviour
             }
         }
 
+        // Clean up destroyed targets
+        List<GameObject> keys = new List<GameObject>(potentialTargets.Keys);
+        foreach (GameObject target in keys)
+        {
+            if (target == null)
+            {
+                potentialTargets.Remove(target);
+            }
+        }
+
+        // Change color to yellow if there are potential targets but none are locked
+        if (lockedTarget == null && potentialTargets.Count > 0)
+        {
+            targetingLaser.SetLaserColor(Color.yellow);
+        }
     }
 
     public GameObject GetLockedTarget()
@@ -110,5 +124,6 @@ public class TargetingSystem : MonoBehaviour
     {
         lockedTarget = null;
         targetingLaser.SetLaserColor(Color.green);
+        //Debug.Log("Resetting");
     }
 }
