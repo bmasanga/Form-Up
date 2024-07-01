@@ -7,7 +7,7 @@ public class Launcher : MonoBehaviour
     [SerializeField] GameObject missilePrefab;
     [SerializeField] int maxAmmo = 3;
     [SerializeField] int currentAmmo;
-    [SerializeField] float missileLifetime = 5f; 
+    // [SerializeField] float missileLifetime = 5f; 
 
     [SerializeField] float maxReloadTime = 10f;
     [SerializeField] float reloadRate = 1f;
@@ -65,7 +65,7 @@ public class Launcher : MonoBehaviour
                 Debug.Log("Missile launched at target: " + target.name);
             }
         
-            Destroy(missileInstance, missileLifetime);
+            // Destroy(missileInstance, missileLifetime);
 
             isReloading = true;
             currentReloadTime = 0f;

@@ -13,6 +13,8 @@ public class HomingProjectile : MonoBehaviour
     [SerializeField] float speed = 5f;
     [SerializeField] float rotateSpeed = 200f;
     [SerializeField] float damage = 100f;
+    [SerializeField] float maxLifetime = 5f;
+    float currentLifeTime = 0f;
 
     Rigidbody2D rb2d;
     
@@ -21,6 +23,11 @@ public class HomingProjectile : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
     }
 
+    void Update()
+    {
+        HandleLifetime();
+    }
+    
     void FixedUpdate()
     {
         if (target == null) return;
@@ -52,10 +59,20 @@ public class HomingProjectile : MonoBehaviour
             shield.TakeDamage(damage);
         }
 
-        HandleExplosion(0);
+        HandleExplosion();
     }
 
-    void HandleExplosion(float delay)
+    void HandleLifetime()
+    {
+        currentLifeTime += Time.deltaTime;
+        if (currentLifeTime >= maxLifetime)
+        {
+            HandleExplosion();
+        }
+    }
+    
+    
+    void HandleExplosion()
     {
         Instantiate(explosionEffect, transform.position, transform.rotation);
 
