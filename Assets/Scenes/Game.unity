@@ -188,6 +188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: meteorGrey_big3 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6328481227300401265, guid: e312abff63a7c49a89346f57b1256e84, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -208,7 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 139123534}
   - component: {fileID: 139123533}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Context Solver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,12 +397,13 @@ GameObject:
   - component: {fileID: 186150071}
   - component: {fileID: 186150078}
   - component: {fileID: 186150077}
+  - component: {fileID: 186150079}
   - component: {fileID: 186150076}
   - component: {fileID: 186150075}
   - component: {fileID: 186150074}
   - component: {fileID: 186150073}
   - component: {fileID: 186150072}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,11 +419,12 @@ Transform:
   m_GameObject: {fileID: 186150070}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 8.44, y: 5.41, z: 0}
+  m_LocalPosition: {x: 12.1, y: 13.4, z: 0}
   m_LocalScale: {x: 1, y: -1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 533562653}
+  - {fileID: 2124809178}
   - {fileID: 1247694649}
   - {fileID: 1887460380}
   m_Father: {fileID: 0}
@@ -532,10 +538,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682ef5db3ed56438793a3b2c09702043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 2
+  maxSpeed: 5
   acceleration: 50
-  deacceleration: 100
+  deceleration: 100
   currentSpeed: 0
+  thrustSpeed: 2
 --- !u!114 &186150076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,9 +602,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 1
-  m_AngularDrag: 0.05
+  m_Mass: 0.5
+  m_LinearDrag: 0.5
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -610,6 +617,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &186150079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186150070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c56f1f836b4422c89778395b34048c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
+  currentHealth: 0
+  shield: {fileID: 2124809179}
+  applyCameraShake: 0
 --- !u!4 &211701936 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7557077430868661594, guid: c5c13b295092d4595817929ecca58ce8, type: 3}
@@ -1314,6 +1337,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: meteorGrey_big2 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 341545225543442490, guid: 52b7e9de3703c460ab2889ea5de1997c, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8718417563480781816, guid: 52b7e9de3703c460ab2889ea5de1997c, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.4999999
@@ -1411,6 +1438,10 @@ PrefabInstance:
     - target: {fileID: 3991404491776212898, guid: 1b01321632ffe42c7aea578d684b4b02, type: 3}
       propertyPath: m_Name
       value: meteorGrey_big4 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991404491776212898, guid: 1b01321632ffe42c7aea578d684b4b02, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4254848914806710567, guid: 1b01321632ffe42c7aea578d684b4b02, type: 3}
       propertyPath: m_LocalScale.x
@@ -1554,6 +1585,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: meteorGrey_big1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2312397209216129545, guid: c5c13b295092d4595817929ecca58ce8, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7557077430868661594, guid: c5c13b295092d4595817929ecca58ce8, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1622,7 +1657,7 @@ GameObject:
   m_Component:
   - component: {fileID: 484328801}
   - component: {fileID: 484328802}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle Behaviors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2257,6 +2292,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: meteorGrey_big3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6328481227300401265, guid: e312abff63a7c49a89346f57b1256e84, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2322,6 +2361,10 @@ PrefabInstance:
     - target: {fileID: 1835677346713312156, guid: 562044d7c7e4f44ceb9b78f055a9bba7, type: 3}
       propertyPath: m_Name
       value: meteorGrey_big2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835677346713312156, guid: 562044d7c7e4f44ceb9b78f055a9bba7, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2113572409741392643, guid: 562044d7c7e4f44ceb9b78f055a9bba7, type: 3}
       propertyPath: m_LocalScale.x
@@ -2439,7 +2482,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 30, y: 30}
+  m_Size: {x: 20, y: 20}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2455,7 +2498,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 15, y: 15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 822990316}
@@ -2470,7 +2513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 616950662}
   - component: {fileID: 616950663}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Target Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2504,10 +2547,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eeee878530cd47bcab39902b30b891c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetDetectionRange: 10
+  targetDetectionRange: 15
   obstaclesLayerMask:
     serializedVersion: 2
-    m_Bits: 4224
+    m_Bits: 4232
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -2661,7 +2704,7 @@ GameObject:
   m_Component:
   - component: {fileID: 724842151}
   - component: {fileID: 724842152}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Seek Behavior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2743,7 +2786,7 @@ GameObject:
   m_Component:
   - component: {fileID: 785279486}
   - component: {fileID: 785279485}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2765,7 +2808,7 @@ MonoBehaviour:
   detectionRadius: 4
   layerMask:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 4104
   showGizmos: 1
 --- !u!4 &785279486
 Transform:
@@ -3068,6 +3111,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: meteorGrey_big2 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835677346713312156, guid: 562044d7c7e4f44ceb9b78f055a9bba7, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2113572409741392643, guid: 562044d7c7e4f44ceb9b78f055a9bba7, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -3256,6 +3303,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: meteorGrey_big3 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6328481227300401265, guid: e312abff63a7c49a89346f57b1256e84, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3272,6 +3323,10 @@ PrefabInstance:
     - target: {fileID: 3991404491776212898, guid: 1b01321632ffe42c7aea578d684b4b02, type: 3}
       propertyPath: m_Name
       value: meteorGrey_big4 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991404491776212898, guid: 1b01321632ffe42c7aea578d684b4b02, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4254848914806710567, guid: 1b01321632ffe42c7aea578d684b4b02, type: 3}
       propertyPath: m_LocalScale.x
@@ -3610,7 +3665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1247694649}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Detectors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3650,6 +3705,10 @@ PrefabInstance:
     - target: {fileID: 341545225543442490, guid: 52b7e9de3703c460ab2889ea5de1997c, type: 3}
       propertyPath: m_Name
       value: meteorGrey_big2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 341545225543442490, guid: 52b7e9de3703c460ab2889ea5de1997c, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8718417563480781816, guid: 52b7e9de3703c460ab2889ea5de1997c, type: 3}
       propertyPath: m_LocalScale.x
@@ -3811,6 +3870,10 @@ PrefabInstance:
     - target: {fileID: 2312397209216129545, guid: c5c13b295092d4595817929ecca58ce8, type: 3}
       propertyPath: m_Name
       value: meteorGrey_big1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312397209216129545, guid: c5c13b295092d4595817929ecca58ce8, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7557077430868661594, guid: c5c13b295092d4595817929ecca58ce8, type: 3}
       propertyPath: m_LocalScale.x
@@ -4202,6 +4265,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441985773}
   m_CullTransparentMesh: 1
+--- !u!1001 &1443893806
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 186150071}
+    m_Modifications:
+    - target: {fileID: 61542488954982827, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61542488954982827, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61542488954982827, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61542488954982827, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61542488954982827, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61542488954982827, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61542488954982827, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61542488954982827, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61542488954982827, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61542488954982827, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61542488954982827, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544063463173057629, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+      propertyPath: m_Name
+      value: Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544063463173057629, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771611706993781389, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+      propertyPath: isActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7069700041925981182, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
 --- !u!1 &1467896373
 GameObject:
   m_ObjectHideFlags: 3
@@ -4347,6 +4483,10 @@ PrefabInstance:
     - target: {fileID: 341545225543442490, guid: 52b7e9de3703c460ab2889ea5de1997c, type: 3}
       propertyPath: m_Name
       value: meteorGrey_big2 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 341545225543442490, guid: 52b7e9de3703c460ab2889ea5de1997c, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8718417563480781816, guid: 52b7e9de3703c460ab2889ea5de1997c, type: 3}
       propertyPath: m_LocalScale.x
@@ -4557,6 +4697,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: meteorGrey_big4 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3991404491776212898, guid: 1b01321632ffe42c7aea578d684b4b02, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4254848914806710567, guid: 1b01321632ffe42c7aea578d684b4b02, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.50000006
@@ -4621,6 +4765,10 @@ PrefabInstance:
     - target: {fileID: 2312397209216129545, guid: c5c13b295092d4595817929ecca58ce8, type: 3}
       propertyPath: m_Name
       value: meteorGrey_big1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312397209216129545, guid: c5c13b295092d4595817929ecca58ce8, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7557077430868661594, guid: c5c13b295092d4595817929ecca58ce8, type: 3}
       propertyPath: m_LocalScale.x
@@ -4787,6 +4935,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: meteorGrey_big1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2312397209216129545, guid: c5c13b295092d4595817929ecca58ce8, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7557077430868661594, guid: c5c13b295092d4595817929ecca58ce8, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -4941,6 +5093,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: meteorGrey_big4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3991404491776212898, guid: 1b01321632ffe42c7aea578d684b4b02, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4254848914806710567, guid: 1b01321632ffe42c7aea578d684b4b02, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -5082,6 +5238,10 @@ PrefabInstance:
     - target: {fileID: 1835677346713312156, guid: 562044d7c7e4f44ceb9b78f055a9bba7, type: 3}
       propertyPath: m_Name
       value: meteorGrey_big2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835677346713312156, guid: 562044d7c7e4f44ceb9b78f055a9bba7, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2113572409741392643, guid: 562044d7c7e4f44ceb9b78f055a9bba7, type: 3}
       propertyPath: m_LocalScale.x
@@ -5339,6 +5499,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: meteorGrey_big3 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6328481227300401265, guid: e312abff63a7c49a89346f57b1256e84, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5447,7 +5611,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1887460380}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Steering Behaviors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5483,6 +5647,10 @@ PrefabInstance:
     - target: {fileID: 1835677346713312156, guid: 562044d7c7e4f44ceb9b78f055a9bba7, type: 3}
       propertyPath: m_Name
       value: meteorGrey_big2 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835677346713312156, guid: 562044d7c7e4f44ceb9b78f055a9bba7, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2113572409741392643, guid: 562044d7c7e4f44ceb9b78f055a9bba7, type: 3}
       propertyPath: m_LocalScale.x
@@ -5816,6 +5984,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: meteorGrey_big2 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 341545225543442490, guid: 52b7e9de3703c460ab2889ea5de1997c, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8718417563480781816, guid: 52b7e9de3703c460ab2889ea5de1997c, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.4999998
@@ -6042,6 +6214,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6020625239912050404, guid: 9a733e698a4c2494b8de3ffcc0aebd5e, type: 3}
   m_PrefabInstance: {fileID: 2018171028}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &2124809178 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 61542488954982827, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+  m_PrefabInstance: {fileID: 1443893806}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2124809179 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1771611706993781389, guid: c7c3b9b54962f486aa38c8d65ce23469, type: 3}
+  m_PrefabInstance: {fileID: 1443893806}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0990ee1acfcb488baea26c1007a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2139139515 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2113572409741392643, guid: 562044d7c7e4f44ceb9b78f055a9bba7, type: 3}
@@ -6058,6 +6246,10 @@ PrefabInstance:
     - target: {fileID: 1835677346713312156, guid: 562044d7c7e4f44ceb9b78f055a9bba7, type: 3}
       propertyPath: m_Name
       value: meteorGrey_big2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835677346713312156, guid: 562044d7c7e4f44ceb9b78f055a9bba7, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2113572409741392643, guid: 562044d7c7e4f44ceb9b78f055a9bba7, type: 3}
       propertyPath: m_LocalScale.x
@@ -6124,6 +6316,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: meteorGrey_big1
       objectReference: {fileID: 0}
+    - target: {fileID: 2312397209216129545, guid: c5c13b295092d4595817929ecca58ce8, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7557077430868661594, guid: c5c13b295092d4595817929ecca58ce8, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -6188,6 +6384,10 @@ PrefabInstance:
     - target: {fileID: 341545225543442490, guid: 52b7e9de3703c460ab2889ea5de1997c, type: 3}
       propertyPath: m_Name
       value: meteorGrey_big2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 341545225543442490, guid: 52b7e9de3703c460ab2889ea5de1997c, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8718417563480781816, guid: 52b7e9de3703c460ab2889ea5de1997c, type: 3}
       propertyPath: m_LocalScale.x
@@ -6302,6 +6502,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: meteorGrey_big3
       objectReference: {fileID: 0}
+    - target: {fileID: 6328481227300401265, guid: e312abff63a7c49a89346f57b1256e84, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6318,6 +6522,10 @@ PrefabInstance:
     - target: {fileID: 3991404491776212898, guid: 1b01321632ffe42c7aea578d684b4b02, type: 3}
       propertyPath: m_Name
       value: meteorGrey_big4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991404491776212898, guid: 1b01321632ffe42c7aea578d684b4b02, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4254848914806710567, guid: 1b01321632ffe42c7aea578d684b4b02, type: 3}
       propertyPath: m_LocalScale.x
