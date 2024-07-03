@@ -30,7 +30,7 @@ public class EnemyAgent : MonoBehaviour
 
         agentMover.MovementInput = MovementInput;
         //weaponParent.PointerPosition = pointerInput;
-        //AnimateCharacter();
+        AnimateCharacter();
     }
 
     public void PerformAttack()
@@ -39,12 +39,12 @@ public class EnemyAgent : MonoBehaviour
     }
 
 
-    // private void AnimateCharacter()
-    // {
-    //     Vector2 lookDirection = pointerInput - (Vector2)transform.position;
-    //     agentAnimations.RotateToPointer(lookDirection);
-    //     //agentAnimations.PlayAnimation(MovementInput);
-    // }
+    private void AnimateCharacter()
+    {
+        Vector2 lookDirection = pointerInput - (Vector2)transform.position;
+        agentAnimations.RotateToPointer(lookDirection);
+        //agentAnimations.PlayAnimation(MovementInput);
+    }
 
     
 

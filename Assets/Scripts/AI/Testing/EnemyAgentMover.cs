@@ -13,8 +13,8 @@ public class EnemyAgentMover : MonoBehaviour
 
     [SerializeField] float thrustSpeed = 1.0f;
     //[SerializeField] float decelerationRate = 5.0f;
-    Vector2 thrustDirection;
-    Vector2 thrustForce;
+    // Vector2 thrustDirection;
+    // Vector2 thrustForce;
 
     public Vector2 MovementInput { get; set; }
 
@@ -51,14 +51,19 @@ public class EnemyAgentMover : MonoBehaviour
     {
          if (MovementInput.magnitude > 0)
         {
-            thrustDirection = transform.TransformDirection(-MovementInput).normalized;
-            rb2d.AddForce(thrustDirection * thrustSpeed * MovementInput.magnitude, ForceMode2D.Force);
-        }
-        // else
-        // {
-        //     rb2d.velocity = Vector2.Lerp(rb2d.velocity, Vector2.zero, decelerationRate * Time.deltaTime);
-        // }
+            rb2d.AddForce(MovementInput.normalized * thrustSpeed * MovementInput.magnitude, ForceMode2D.Force);
 
+            
+            // //Convert the MovementInput from global space to local space
+            // Vector2 localDirection = transform.InverseTransformDirection(MovementInput).normalized;
+        
+            // // Apply force in the local direction
+            // rb2d.AddForce(localDirection * thrustSpeed * MovementInput.magnitude, ForceMode2D.Force);
+            
+            // Vector2 thrustDirection = transform.TransformDirection(MovementInput).normalized;
+            // rb2d.AddForce(thrustDirection * thrustSpeed * MovementInput.magnitude, ForceMode2D.Force);
+
+        }
     }
 
     // private void Thrust2()
