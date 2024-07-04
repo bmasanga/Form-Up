@@ -6,8 +6,11 @@ using UnityEngine.InputSystem;
 
 public class EnemyAgent : MonoBehaviour
 {
-    private EnemyAgentAnimations agentAnimations;
-    private EnemyAgentMover agentMover;
+    EnemyAgentAnimations agentAnimations;
+    EnemyAgentMover agentMover;
+    EnemyCannon enemyCannon;
+
+    
 
     //private WeaponParent weaponParent;
 
@@ -21,6 +24,7 @@ public class EnemyAgent : MonoBehaviour
         agentAnimations = GetComponent<EnemyAgentAnimations>();
         // weaponParent = GetComponentInChildren<WeaponParent>();
         agentMover = GetComponent<EnemyAgentMover>();
+        enemyCannon = GetComponentInChildren<EnemyCannon>();
     }
     
     private void Update()
@@ -29,13 +33,12 @@ public class EnemyAgent : MonoBehaviour
         // movementInput = movement.action.ReadValue<Vector2>().normalized;
 
         agentMover.MovementInput = MovementInput;
-        //weaponParent.PointerPosition = pointerInput;
         AnimateCharacter();
     }
 
     public void PerformAttack()
     {
-        //weaponParent.Attack();
+        enemyCannon.Fire();
     }
 
 
@@ -46,6 +49,5 @@ public class EnemyAgent : MonoBehaviour
         //agentAnimations.PlayAnimation(MovementInput);
     }
 
-    
 
 }

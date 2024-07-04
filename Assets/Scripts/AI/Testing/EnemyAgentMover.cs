@@ -7,9 +7,9 @@ public class EnemyAgentMover : MonoBehaviour
 {
     private Rigidbody2D rb2d;
 
-    [SerializeField] float maxSpeed = 2, acceleration = 50, deceleration = 100;
-    [SerializeField] float currentSpeed = 0;
-    private Vector2 oldMovementInput;
+    // [SerializeField] float maxSpeed = 2, acceleration = 50, deceleration = 100;
+    // [SerializeField] float currentSpeed = 0;
+    // private Vector2 oldMovementInput;
 
     [SerializeField] float thrustSpeed = 1.0f;
     //[SerializeField] float decelerationRate = 5.0f;
