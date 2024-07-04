@@ -19621,6 +19621,7 @@ MonoBehaviour:
   currentHealth: 0
   shield: {fileID: 1029674234296942008}
   applyCameraShake: 1
+  isPlayer: 1
 --- !u!114 &6970215870388291342
 MonoBehaviour:
   m_ObjectHideFlags: 0
