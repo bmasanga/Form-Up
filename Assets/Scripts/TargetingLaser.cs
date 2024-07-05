@@ -11,7 +11,14 @@ public class TargetingLaser : MonoBehaviour
     void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.positionCount = 2; // Start and end points of the laser
+        if (lineRenderer != null)
+        {
+            lineRenderer.positionCount = 2; // Start and end points of the laser
+        }
+        else
+        {
+            Debug.LogError("LineRenderer component not found on object: " + gameObject.name);
+        }
     }
 
     void Update()

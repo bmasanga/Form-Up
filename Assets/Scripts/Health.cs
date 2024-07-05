@@ -45,14 +45,14 @@ public class Health : MonoBehaviour
 
     void Die()
     {
-    //    if(!isPlayer)
-    //     {
-    //         scoreKeeper.ModifyScore(score);
-    //     }
-    //     else
-    //     {
-    //         levelManager.LoadGameOver();
-    //     }
+       if(!isPlayer)
+        {
+            scoreKeeper.ModifyScore(score);
+        }
+        else
+        {
+            levelManager.LoadGameOver();
+        }
         Destroy(gameObject);
     }
 

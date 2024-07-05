@@ -14652,7 +14652,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6020625239912050404}
@@ -19401,7 +19401,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7a30fc91b879842daa15fad16367e55d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19419,8 +19419,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1004266851
-  m_SortingLayer: 8
+  m_SortingLayerID: 642656039
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -19622,6 +19622,7 @@ MonoBehaviour:
   shield: {fileID: 1029674234296942008}
   applyCameraShake: 1
   isPlayer: 1
+  score: 100
 --- !u!114 &6970215870388291342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24771,9 +24772,9 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 642656039
-  m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingLayerID: -1004266851
+  m_SortingLayer: 8
+  m_SortingOrder: -2
   m_Time: 3
   m_PreviewTimeScale: 1
   m_Parameters:
@@ -24805,8 +24806,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
-      key1: {r: 1, g: 0.8218751, b: 0, a: 0}
+      key0: {r: 1, g: 0.7971637, b: 0, a: 1}
+      key1: {r: 0.9882353, g: 0.02745098, b: 0.023529412, a: 0}
       key2: {r: 1, g: 0.8218751, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -24814,7 +24815,7 @@ TrailRenderer:
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 6939
-      ctime1: 37972
+      ctime1: 29298
       ctime2: 50693
       ctime3: 0
       ctime4: 0
@@ -24823,7 +24824,7 @@ TrailRenderer:
       ctime7: 0
       atime0: 0
       atime1: 65535
-      atime2: 0
+      atime2: 65535
       atime3: 0
       atime4: 0
       atime5: 0
@@ -24834,13 +24835,13 @@ TrailRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 0
+    numCapVertices: 10
     alignment: 0
     textureMode: 0
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0
   m_MaskInteraction: 0
   m_Autodestruct: 0
   m_Emitting: 1
@@ -25243,12 +25244,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5487642483872530544, guid: c64c5c048474c4c2f898af0a0925b624, type: 3}
       propertyPath: maxHeat
-      value: 20
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487642483872530544, guid: c64c5c048474c4c2f898af0a0925b624, type: 3}
+      propertyPath: heatPerShot
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487642483872530544, guid: c64c5c048474c4c2f898af0a0925b624, type: 3}
+      propertyPath: weaponActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5487642483872530544, guid: c64c5c048474c4c2f898af0a0925b624, type: 3}
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 675338409100015005, guid: 9f91a0cb4c61f4525a3f1cba5ae26544, type: 3}
+    - target: {fileID: 5487642483872530544, guid: c64c5c048474c4c2f898af0a0925b624, type: 3}
+      propertyPath: normalCooldownRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487642483872530544, guid: c64c5c048474c4c2f898af0a0925b624, type: 3}
+      propertyPath: overheatedCooldownRate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6315687250203673750, guid: c64c5c048474c4c2f898af0a0925b624, type: 3}
       propertyPath: m_Name
       value: Blaster Canon

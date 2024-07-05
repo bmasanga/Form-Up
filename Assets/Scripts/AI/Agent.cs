@@ -41,23 +41,23 @@ public class Agent : MonoBehaviour
         agentMover = GetComponent<AgentMover>();
     }
 
-    private void OnEnable()
-    {
+    // private void OnEnable()
+    // {
         // Subscribing to events from PlayerInput
-        PlayerInput playerInput = FindObjectOfType<PlayerInput>();
-        if (playerInput != null)
-        {
-            playerInput.OnMoveInput.AddListener(OnMovePerformed);
-            playerInput.OnLookInput.AddListener(OnLookPerformed);
-            playerInput.OnFireInput.AddListener(OnFirePerformed);
-            playerInput.OnFireCancel.AddListener(OnFireCanceled);
-            playerInput.OnActionInput.AddListener(OnActionPerformed);
-            playerInput.OnActionCancel.AddListener(OnActionCanceled);
-            playerInput.OnToggleInput.AddListener(OnTogglePerformed);
-            playerInput.OnToggleCancel.AddListener(OnToggleCanceled);
-            playerInput.OnTargetInput.AddListener(OnTargetPerformed);
-            playerInput.OnTargetCancel.AddListener(OnTargetCanceled);
-        }
+        // PlayerInput playerInput = FindObjectOfType<PlayerInput>();
+        // if (playerInput != null)
+        // {
+        //     playerInput.OnMoveInput.AddListener(OnMovePerformed);
+        //     playerInput.OnLookInput.AddListener(OnLookPerformed);
+        //     playerInput.OnFireInput.AddListener(OnFirePerformed);
+        //     playerInput.OnFireCancel.AddListener(OnFireCanceled);
+        //     playerInput.OnActionInput.AddListener(OnActionPerformed);
+        //     playerInput.OnActionCancel.AddListener(OnActionCanceled);
+        //     playerInput.OnToggleInput.AddListener(OnTogglePerformed);
+        //     playerInput.OnToggleCancel.AddListener(OnToggleCanceled);
+        //     playerInput.OnTargetInput.AddListener(OnTargetPerformed);
+        //     playerInput.OnTargetCancel.AddListener(OnTargetCanceled);
+        // }
         // Subscribing to events from EnemyAI
         // EnemyAI enemyAI = GetComponent<EnemyAI>();
         // if (enemyAI != null)
@@ -67,7 +67,7 @@ public class Agent : MonoBehaviour
         //     enemyAI.OnFireInput.AddListener(OnFirePerformed);
         //     enemyAI.OnFireCancel.AddListener(OnFireCanceled);
         // }
-    }
+    // }
 
     private void OnDisable()
     {

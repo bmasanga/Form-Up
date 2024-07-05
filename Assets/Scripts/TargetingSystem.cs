@@ -24,7 +24,8 @@ public class TargetingSystem : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (!agent.GetIsTargeting()) return; // Ignore if not targeting
+        if (agent == null || !agent.GetIsTargeting()) return; // Check if agent or targeting state is valid
+
         
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
@@ -53,7 +54,8 @@ public class TargetingSystem : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (!agent.GetIsTargeting()) return; // Ignore if not targeting
+        if (agent == null || !agent.GetIsTargeting()) return; // Check if agent or targeting state is valid
+
         
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
