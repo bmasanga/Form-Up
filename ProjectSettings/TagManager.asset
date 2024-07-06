@@ -20,10 +20,10 @@ TagManager:
   - Particle
   - Obstacle
   - Targeting
-  - Enemy Shield
-  - Player Shield
-  - 
-  - 
+  - EnemyShield
+  - PlayerShield
+  - PlayerBuilding
+  - EnemyBuilding
   - 
   - 
   - 
@@ -54,11 +54,14 @@ TagManager:
   - name: Particle
     uniqueID: 642656039
     locked: 0
-  - name: Enemy Projecitle
+  - name: EnemyProjecitle
     uniqueID: 3663384829
     locked: 0
-  - name: Player Projectile
+  - name: PlayerProjectile
     uniqueID: 3120929081
+    locked: 0
+  - name: Building
+    uniqueID: 28931499
     locked: 0
   - name: Enemy
     uniqueID: 1907893191
