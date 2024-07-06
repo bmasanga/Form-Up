@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyCannon : MonoBehaviour
 {
@@ -10,7 +11,26 @@ public class EnemyCannon : MonoBehaviour
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float projectileLifetime = 5f;
- 
+
+    private EnemyAgent enemyAgent;
+
+    void Start()
+    {
+        enemyAgent = GetComponentInParent<EnemyAgent>();
+        if (enemyAgent != null)
+        {
+            enemyAgent.OnPerformAttack.AddListener(Fire);
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (enemyAgent != null)
+        {
+            enemyAgent.OnPerformAttack.RemoveListener(Fire);
+        }
+    }
+    
     public void Fire()
     {
             GameObject projectileInstance = Instantiate(projectilePrefab, transform.position, transform.rotation);

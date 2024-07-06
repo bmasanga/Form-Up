@@ -523,7 +523,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1907893191
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 94271ee41b1f54d2e8f539824b897a15, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -706,6 +706,8 @@ MonoBehaviour:
   currentHealth: 0
   shield: {fileID: 3150823752296358314}
   applyCameraShake: 0
+  isPlayer: 0
+  score: 100
 --- !u!114 &2371262442001260557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,6 +761,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a565e51e2d0d419799e693b0b5131ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnPerformAttack:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6607447816821665379
 MonoBehaviour:
   m_ObjectHideFlags: 0

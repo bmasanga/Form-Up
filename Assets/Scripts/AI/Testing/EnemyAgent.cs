@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class EnemyAgent : MonoBehaviour
@@ -10,8 +11,8 @@ public class EnemyAgent : MonoBehaviour
     EnemyAgentMover agentMover;
     EnemyCannon enemyCannon;
 
+    public UnityEvent OnPerformAttack;
     
-
     //private WeaponParent weaponParent;
 
     private Vector2 pointerInput, movementInput;
@@ -38,7 +39,8 @@ public class EnemyAgent : MonoBehaviour
 
     public void PerformAttack()
     {
-        enemyCannon.Fire();
+        //enemyCannon.Fire();
+        OnPerformAttack?.Invoke();
     }
 
 
