@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EnemyAI2 : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
     [SerializeField]
     private List<SteeringBehaviour> steeringBehaviours;

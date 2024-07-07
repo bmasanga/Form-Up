@@ -25260,11 +25260,11 @@ PrefabInstance:
       objectReference: {fileID: 675338409100015005, guid: 9f91a0cb4c61f4525a3f1cba5ae26544, type: 3}
     - target: {fileID: 5487642483872530544, guid: c64c5c048474c4c2f898af0a0925b624, type: 3}
       propertyPath: normalCooldownRate
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5487642483872530544, guid: c64c5c048474c4c2f898af0a0925b624, type: 3}
       propertyPath: overheatedCooldownRate
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6315687250203673750, guid: c64c5c048474c4c2f898af0a0925b624, type: 3}
       propertyPath: m_Name
