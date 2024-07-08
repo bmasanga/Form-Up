@@ -6,13 +6,9 @@ using UnityEngine.Events;
 public class ChaseState : State
 {
     [SerializeField] GameObject indicator;
-    [SerializeField] private Vector2 movementInput;
     [SerializeField] float aiUpdateDelay = 0.06f; 
     [SerializeField] float attackDelay = 1f;
-    [SerializeField] float attackDistance = 0.5f;
-
-    public UnityEvent OnAttackPressed;
-    public UnityEvent<Vector2> OnMovementInput, OnPointerInput;
+    [SerializeField] float attackDistance = 8f;
 
     bool following = false;
 
@@ -33,20 +29,6 @@ public class ChaseState : State
             indicator.SetActive(false);
         }
     }
-
-    // public override void Update()
-    // {
-    //     if (aIData.currentTarget == null)
-    //     {
-    //         return;
-    //     }
-
-    //     OnPointerInput?.Invoke(aIData.currentTarget.position);
-
-    //     movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aIData);
-
-    //     OnMovementInput?.Invoke(movementInput); 
-    // }
 
     public override void Update()
     {

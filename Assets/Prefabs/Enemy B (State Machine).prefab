@@ -899,8 +899,21 @@ MonoBehaviour:
   - {fileID: 1836401003255072778}
   - {fileID: 4838340932611138947}
   transitions: []
-  indicator: {fileID: 0}
-  movementInput: {x: 0, y: 0}
+  OnAttackPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5684453146365659639}
+        m_TargetAssemblyTypeName: EnemyAgent, Assembly-CSharp
+        m_MethodName: PerformAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnMovementInput:
     m_PersistentCalls:
       m_Calls:
@@ -931,6 +944,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  indicator: {fileID: 304936414341452734}
+  movementInput: {x: 0, y: 0}
+  aiUpdateDelay: 0.06
+  attackDelay: 0.5
+  attackDistance: 10
 --- !u!1001 &3688446944875989799
 PrefabInstance:
   m_ObjectHideFlags: 0
