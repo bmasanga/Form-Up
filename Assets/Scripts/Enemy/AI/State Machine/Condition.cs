@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Condition : ScriptableObject
 {
-   // might need to change EnemyAgent to EnemyAI
-   public virtual bool Test(EnemyAgent agent)
+   // might need to change AIData
+   public virtual bool Test(AIData aIData)
    {
         return false;
    }
