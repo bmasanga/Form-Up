@@ -45,7 +45,7 @@ public class State : MonoBehaviour
         
     }
 
-    void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         foreach (Transition transition in transitions)
         {

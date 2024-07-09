@@ -9,5 +9,6 @@ public class IdleState : State
         base.OnEnable();
         Debug.Log("Stopping");
         movementInput = Vector2.zero;
+        OnMovementInput?.Invoke(movementInput);
     }
 }

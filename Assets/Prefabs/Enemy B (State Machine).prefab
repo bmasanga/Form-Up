@@ -685,6 +685,8 @@ GameObject:
   - component: {fileID: 2217586190029096522}
   - component: {fileID: 3230566823640893638}
   - component: {fileID: 7313726615663888810}
+  - component: {fileID: 5171754534341166016}
+  - component: {fileID: 7745990391857340409}
   m_Layer: 9
   m_Name: Enemy B (State Machine)
   m_TagString: Untagged
@@ -888,7 +890,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8180175538297290714}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8556eb80eb8004577bc64e6c7bdaf6b4, type: 3}
   m_Name: 
@@ -945,10 +947,135 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   indicator: {fileID: 304936414341452734}
-  movementInput: {x: 0, y: 0}
   aiUpdateDelay: 0.06
   attackDelay: 0.5
   attackDistance: 10
+--- !u!114 &5171754534341166016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180175538297290714}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42abba6cc608448c89a83ae3f70b8698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aIData: {fileID: 5183612295863981715}
+  movementDirectionSolver: {fileID: 8857363745243002931}
+  steeringBehaviours: []
+  transitions: []
+  OnAttackPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5684453146365659639}
+        m_TargetAssemblyTypeName: EnemyAgent, Assembly-CSharp
+        m_MethodName: PerformAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnMovementInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5684453146365659639}
+        m_TargetAssemblyTypeName: EnemyAgent, Assembly-CSharp
+        m_MethodName: set_MovementInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPointerInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5684453146365659639}
+        m_TargetAssemblyTypeName: EnemyAgent, Assembly-CSharp
+        m_MethodName: set_PointerInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7745990391857340409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180175538297290714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212bcf3d42a974ee9b7e00dbf7455fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aIData: {fileID: 5183612295863981715}
+  movementDirectionSolver: {fileID: 8857363745243002931}
+  steeringBehaviours: []
+  transitions: []
+  OnAttackPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5684453146365659639}
+        m_TargetAssemblyTypeName: EnemyAgent, Assembly-CSharp
+        m_MethodName: PerformAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnMovementInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5684453146365659639}
+        m_TargetAssemblyTypeName: EnemyAgent, Assembly-CSharp
+        m_MethodName: set_MovementInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPointerInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5684453146365659639}
+        m_TargetAssemblyTypeName: EnemyAgent, Assembly-CSharp
+        m_MethodName: set_PointerInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  angleModifier: 1
+  isWandering: 0
+  wanderingSpeed: 0.5
+  waitDelay: 2
 --- !u!1001 &3688446944875989799
 PrefabInstance:
   m_ObjectHideFlags: 0
