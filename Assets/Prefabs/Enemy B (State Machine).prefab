@@ -1072,10 +1072,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  angleModifier: 1
   isWandering: 0
   wanderingSpeed: 0.5
-  waitDelay: 2
+  wanderTime: 2
+  waitTime: 2
+  randomMovementRange: 10
 --- !u!1001 &3688446944875989799
 PrefabInstance:
   m_ObjectHideFlags: 0

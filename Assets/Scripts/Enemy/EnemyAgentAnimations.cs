@@ -5,31 +5,9 @@ using UnityEngine;
 public class EnemyAgentAnimations : MonoBehaviour
 {
     [SerializeField] float rotationSpeed = 200f;
-    
-    // private Animator animator;
-
-    // private void Awake()
-    // {
-    //     animator = GetComponent<Animator>();
-    // }
 
     public void RotateToPointer(Vector2 lookDirection)
     {
-        // Vector3 scale = transform.localScale;
-        // if (lookDirection.x > 0)
-        // {
-        //     scale.x = 1;
-        // }
-        // else if (lookDirection.x < 0)
-        // {
-        //     scale.x = -1;
-        // }
-        // transform.localScale = scale;
-
-        // Vector3 mouseScreenPosition = new Vector3(lookInput.x, lookInput.y, Camera.main.nearClipPlane);
-        // Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
-        // Vector3 direction = mouseWorldPosition - transform.position;
-        //direction.z = 0f;
 
         if (lookDirection.magnitude > 0.1f)
         {
@@ -39,10 +17,4 @@ public class EnemyAgentAnimations : MonoBehaviour
         }
 
     }
-
-    // public void PlayAnimation(Vector2 movementInput)
-    // {
-    //     animator.SetBool("Running", movementInput.magnitude > 0);
-
-    // }
 }
