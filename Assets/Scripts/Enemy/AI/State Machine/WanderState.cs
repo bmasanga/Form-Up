@@ -7,7 +7,7 @@ public class WanderState : State
     // [SerializeField] float angleModifier = 1;
     [SerializeField] bool isWandering = false;
     [SerializeField] float wanderingSpeed = 0.5f;
-    [SerializeField] float wanderTime = 2.0f;
+    //[SerializeField] float wanderTime = 2.0f;
     [SerializeField] float waitTime = 2.0f;
 
     [SerializeField] float randomMovementRange = 5.0f;
@@ -20,33 +20,7 @@ public class WanderState : State
     public override void OnEnable()
     {
         base.OnEnable();
-        //targetPosition = GetRandomPointInCircle();
     }
-
-    // public override void Update()
-    // {
-    //     base.Update();
-
-    //     direction = (targetPosition - enemyAgent.transform.position).normalized;
-    //     Vector2 movementInput = direction * wanderingSpeed;
-    //     OnMovementInput?.Invoke(movementInput);
-    //     OnPointerInput?.Invoke(direction);
-
-    //     if ((enemyAgent.transform.position - targetPosition).sqrMagnitude < 1f)
-    //     {
-    //         StartCoroutine(WaitAndChangeTarget());
-    //     }
-    // }
-
-    // IEnumerator WaitAndChangeTarget()
-    // {
-    //     movementInput = Vector2.zero;
-    //     OnMovementInput?.Invoke(movementInput);
-
-    //     yield return new WaitForSecondsRealtime wanderTime);
-
-    //     targetPosition = GetRandomPointInCircle();
-    // }
 
     public override void Update()
     {
@@ -55,29 +29,32 @@ public class WanderState : State
             if (direction.HasValue)
             {
                 
-                OnPointerInput?.Invoke(direction.Value);
+                OnPointerInput?.Invoke(targetPosition);
                 OnMovementInput?.Invoke(movementInput);
+
+                CheckIfReachedTarget();
                 
             }
             return;
         }
         isWandering = true;
-        StartCoroutine(WanderAround());
+        WanderAround();
     }
 
-    IEnumerator WanderAround()
+    void WanderAround()
     {
         targetPosition = GetRandomPointInCircle();
 
         direction = (targetPosition - enemyAgent.transform.position).normalized;
         movementInput = direction.Value.normalized * wanderingSpeed;
         
+        Debug.Log("targetPosition: " + targetPosition);
         Debug.Log("direction: " + direction.Value);
         Debug.Log("movementInput: " + movementInput);
 
-        yield return new WaitForSecondsRealtime(wanderTime);
+        //yield return new WaitForSecondsRealtime(wanderTime);
 
-        StartCoroutine(StopAndWait());
+        //StartCoroutine(StopAndWait());
     }
 
     Vector3 GetRandomPointInCircle()
@@ -85,11 +62,22 @@ public class WanderState : State
         return enemyAgent.transform.position + (Vector3)Random.insideUnitCircle * randomMovementRange;
     }
 
+    void CheckIfReachedTarget()
+    {
+        if ((enemyAgent.transform.position - targetPosition).sqrMagnitude < 1.0f)
+        {
+            movementInput = Vector2.zero;
+            direction = null;
+            OnMovementInput?.Invoke(movementInput);
+            StartCoroutine(StopAndWait());
+        }
+    }
+
     IEnumerator StopAndWait()
     {
-        movementInput = Vector2.zero;
-        direction = null;
-        OnMovementInput?.Invoke(movementInput);
+        // movementInput = Vector2.zero;
+        // direction = null;
+        // OnMovementInput?.Invoke(movementInput);
 
         yield return new WaitForSecondsRealtime(waitTime);
         isWandering = false;
