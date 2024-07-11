@@ -14,9 +14,11 @@ public class State : MonoBehaviour
     protected EnemyAgentAnimations enemyAgentAnimations;
     protected EnemyAI2 enemyAI;
     protected EnemyAgent enemyAgent;
+
+    public List<Transition> transitions = new List<Transition>();
     [SerializeField] protected ContextSolver movementDirectionSolver;
     [SerializeField] protected List<SteeringBehaviour> steeringBehaviours;
-    public List<Transition> transitions = new List<Transition>();
+    
     protected Vector2 movementInput;
     public UnityEvent OnAttackPressed;
     public UnityEvent<Vector2> OnMovementInput, OnPointerInput;

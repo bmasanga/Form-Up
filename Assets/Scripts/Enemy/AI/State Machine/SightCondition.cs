@@ -7,6 +7,6 @@ public class SightCondition : Condition
 {
     public override bool Test(AIData aIData)
     {
-        return aIData.currentTarget;
+        return aIData.targets != null;
     }
 }

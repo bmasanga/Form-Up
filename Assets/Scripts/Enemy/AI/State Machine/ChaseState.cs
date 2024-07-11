@@ -57,7 +57,7 @@ public class ChaseState : State
         if (aIData.currentTarget == null)
         {
             //Stopping Logic
-            Debug.Log("Stopping");
+            //Debug.Log("Stopping");
             movementInput = Vector2.zero;
             following = false;
             yield break;

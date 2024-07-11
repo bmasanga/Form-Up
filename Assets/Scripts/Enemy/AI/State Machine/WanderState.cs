@@ -48,9 +48,9 @@ public class WanderState : State
         direction = (targetPosition - enemyAgent.transform.position).normalized;
         movementInput = direction.Value.normalized * wanderingSpeed;
         
-        Debug.Log("targetPosition: " + targetPosition);
-        Debug.Log("direction: " + direction.Value);
-        Debug.Log("movementInput: " + movementInput);
+        // Debug.Log("targetPosition: " + targetPosition);
+        // Debug.Log("direction: " + direction.Value);
+        // Debug.Log("movementInput: " + movementInput);
 
         //yield return new WaitForSecondsRealtime(wanderTime);
 
