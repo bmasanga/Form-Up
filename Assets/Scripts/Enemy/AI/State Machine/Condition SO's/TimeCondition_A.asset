@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5075bfdac6d524e048119f68f0d9cf01, type: 3}
   m_Name: TimeCondition_A
   m_EditorClassIdentifier: 
-  timeToWait: 2
-  timePassed: 0
+  timeToWait: 10
+  timePassed: 6.5999947
