@@ -6,7 +6,7 @@ public class ObjectiveState : State
 {
     [SerializeField] GameObject indicator;
     [SerializeField] float aiUpdateDelay = 0.06f;
-    [SerializeField] float objectiveReachedThreshold = 1f;
+    //[SerializeField] float objectiveReachedThreshold = 1f;
 
     bool navigating = false;
 
@@ -62,7 +62,7 @@ public class ObjectiveState : State
         else if (aIData.GetObjectivesCount() > 0)
         {
             //Target acquisition logic
-            aIData.currentTarget = aIData.objectiveTransforms[0];
+            aIData.currentTarget = aIData.GetNextObjective();
         }
         //Moving the Agent
         OnMovementInput?.Invoke(movementInput);

@@ -9,7 +9,7 @@ public class LostSightCondition : Condition
     [SerializeField] float timePassed = 0;
     public override bool Test(AIData aIData)
     {
-        if(aIData.currentTarget == null)
+        if(aIData.targets == null)
         {
             timePassed += Time.deltaTime;
             if (timePassed >= timeToWait)
