@@ -14,23 +14,23 @@ public class AIData : MonoBehaviour
 
     public int GetObjectivesCount() => objective == null ? 0 : objective.Count;
 
-    private Objective _objective;
+    //private Objective _objective;
 
     void Start()
     {
-        _objective = FindObjectOfType<Objective>();
-        _objective.OnDestroyObjective.AddListener(RemoveObjective);
+        //_objective = FindObjectOfType<Objective>();
+        //_objective.OnDestroyObjective.AddListener(RemoveObjective);
 
     }
 
-    void OnDestroy()
-    {
-        if(_objective != null)
-        {
-            _objective.OnDestroyObjective.RemoveListener(RemoveObjective);
+    // void OnDestroy()
+    // {
+    //     if(_objective != null)
+    //     {
+    //         _objective.OnDestroyObjective.RemoveListener(RemoveObjective);
 
-        }
-    }
+    //     }
+    // }
     
     public Transform GetNextObjective()
     {
