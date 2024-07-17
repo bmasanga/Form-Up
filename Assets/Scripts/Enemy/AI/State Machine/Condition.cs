@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Condition : ScriptableObject
 {
    // might need to change AIData
-   public virtual bool Test(AIData aIData)
+   public virtual bool Test(AIData aIData, EnemyAgent enemyAgent)
    {
         return false;
    }

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SightCondition", menuName = "Conditions/SightCondition")]
 public class SightCondition : Condition
 {
-    public override bool Test(AIData aIData)
+    public override bool Test(AIData aIData, EnemyAgent enemyAgent)
     {
         return aIData.targets != null;
     }

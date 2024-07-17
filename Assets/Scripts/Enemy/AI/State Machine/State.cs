@@ -18,7 +18,7 @@ public class State : MonoBehaviour
     public List<Transition> transitions = new List<Transition>();
     [SerializeField] protected ContextSolver movementDirectionSolver;
     [SerializeField] protected List<SteeringBehaviour> steeringBehaviours;
-    
+
     protected Vector2 movementInput;
     public UnityEvent OnAttackPressed;
     public UnityEvent<Vector2> OnMovementInput, OnPointerInput;
@@ -51,7 +51,7 @@ public class State : MonoBehaviour
     {
         foreach (Transition transition in transitions)
         {
-            if (transition.condition.Test(aIData))
+            if (transition.condition.Test(aIData, enemyAgent))
             {
                 transition.target.enabled = true;
                 this.enabled = false;

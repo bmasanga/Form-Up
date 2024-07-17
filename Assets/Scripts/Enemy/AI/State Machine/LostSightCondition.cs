@@ -7,7 +7,7 @@ public class LostSightCondition : Condition
 {
     [SerializeField] float timeToWait = 5f;
     [SerializeField] float timePassed = 0;
-    public override bool Test(AIData aIData)
+    public override bool Test(AIData aIData, EnemyAgent enemyAgent)
     {
         if(aIData.targets == null)
         {

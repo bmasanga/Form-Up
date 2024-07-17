@@ -8,11 +8,11 @@ public class AIData : MonoBehaviour
     public Collider2D[] obstacles = null;
 
     public Transform currentTarget;
-    public List<Transform> objective;
+    public List<Transform> objectives;
 
     public int GetTargetsCount() => targets == null ? 0 : targets.Count;
 
-    public int GetObjectivesCount() => objective == null ? 0 : objective.Count;
+    public int GetObjectivesCount() => objectives == null ? 0 : objectives.Count;
 
     //private Objective _objective;
 
@@ -36,9 +36,9 @@ public class AIData : MonoBehaviour
     {
         for (int i = 0; i < GetObjectivesCount(); i++)
         {
-            if (objective[i] != null)
+            if (objectives[i] != null)
             {
-                return objective[i];
+                return objectives[i];
             }
         }
         return null;
@@ -46,11 +46,11 @@ public class AIData : MonoBehaviour
 
     public void RemoveObjective(Transform objectiveTransform)
     {
-        for (int i = 0; i < objective.Count; i++)
+        for (int i = 0; i < objectives.Count; i++)
         {
-            if (objective[i] == objectiveTransform)
+            if (objectives[i] == objectiveTransform)
             {
-                objective[i] = null;
+                objectives[i] = null;
                 break;
             }
         }

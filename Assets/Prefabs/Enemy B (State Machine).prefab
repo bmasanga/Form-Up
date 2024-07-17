@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da6acbb1e709493f9f08862d198cddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 5
+  detectionRadius: 15
   layerMask:
     serializedVersion: 2
     m_Bits: 4104
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b660e1295c1d411680d9aebcd2101d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
+  radius: 15
   agentColliderSize: 0.6
   showGizmo: 1
 --- !u!1 &3594710067138011393
@@ -771,6 +771,7 @@ GameObject:
   - component: {fileID: 7631353950134773027}
   - component: {fileID: 6033134597020380744}
   - component: {fileID: 2477267332070895206}
+  - component: {fileID: 6271098188076277613}
   m_Layer: 9
   m_Name: Enemy B (State Machine)
   m_TagString: Untagged
@@ -922,7 +923,7 @@ MonoBehaviour:
   targets: []
   obstacles: []
   currentTarget: {fileID: 0}
-  objective: []
+  objectives: []
 --- !u!114 &5684453146365659639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,8 +984,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aIData: {fileID: 5183612295863981715}
   transitions:
-  - condition: {fileID: 11400000, guid: ff60d38df9ac749e08a499cc0bc010da, type: 2}
-    target: {fileID: 6033134597020380744}
+  - condition: {fileID: 11400000, guid: d5aed5399beb949b4a293604b2ae1c92, type: 2}
+    target: {fileID: 2477267332070895206}
   movementDirectionSolver: {fileID: 8857363745243002931}
   steeringBehaviours:
   - {fileID: 1836401003255072778}
@@ -1023,9 +1024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aIData: {fileID: 5183612295863981715}
-  transitions:
-  - condition: {fileID: 11400000, guid: d5aed5399beb949b4a293604b2ae1c92, type: 2}
-    target: {fileID: 2477267332070895206}
+  transitions: []
   movementDirectionSolver: {fileID: 8857363745243002931}
   steeringBehaviours:
   - {fileID: 1836401003255072778}
@@ -1079,8 +1078,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aIData: {fileID: 5183612295863981715}
   transitions:
-  - condition: {fileID: 11400000, guid: b65d23fbcff7049c1917d9bbbac05ced, type: 2}
-    target: {fileID: 6033134597020380744}
+  - condition: {fileID: 11400000, guid: 168c1eeabb87547cab0aeeb26a0bde21, type: 2}
+    target: {fileID: 6271098188076277613}
   movementDirectionSolver: {fileID: 8857363745243002931}
   steeringBehaviours:
   - {fileID: 1836401003255072778}
@@ -1132,8 +1131,47 @@ MonoBehaviour:
         m_CallState: 2
   indicator: {fileID: 304936414341452734}
   aiUpdateDelay: 0.06
+--- !u!114 &6271098188076277613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180175538297290714}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c11379a16ab448dae95feafd5c0e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aIData: {fileID: 5183612295863981715}
+  transitions: []
+  movementDirectionSolver: {fileID: 8857363745243002931}
+  steeringBehaviours:
+  - {fileID: 1836401003255072778}
+  - {fileID: 4838340932611138947}
+  OnAttackPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5684453146365659639}
+        m_TargetAssemblyTypeName: EnemyAgent, Assembly-CSharp
+        m_MethodName: PerformAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnMovementInput:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerInput:
+    m_PersistentCalls:
+      m_Calls: []
+  indicator: {fileID: 0}
   attackDelay: 1
-  attackDistance: 8
 --- !u!1001 &3688446944875989799
 PrefabInstance:
   m_ObjectHideFlags: 0

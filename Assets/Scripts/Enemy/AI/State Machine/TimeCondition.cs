@@ -8,7 +8,7 @@ public class TimeCondition : Condition
     [SerializeField] float timeToWait = 2f;
     [SerializeField] float timePassed = 0;
 
-    public override bool Test(AIData aIData)
+    public override bool Test(AIData aIData, EnemyAgent enemyAgent)
     {
         timePassed += Time.deltaTime;
         if (timePassed >= timeToWait)
