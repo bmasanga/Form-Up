@@ -7,8 +7,8 @@ public class ChaseState : State
 {
     [SerializeField] GameObject indicator;
     [SerializeField] float aiUpdateDelay = 0.06f; 
-    //[SerializeField] float attackDelay = 1f;
-    //[SerializeField] float attackDistance = 8f;
+    [SerializeField] float attackDelay = 1f;
+    [SerializeField] float attackDistance = 8f;
 
     bool following = false;
 
@@ -64,23 +64,23 @@ public class ChaseState : State
         }
         else
         {
-            // float distance = Vector2.Distance(aIData.currentTarget.position, transform.position);
+            float distance = Vector2.Distance(aIData.currentTarget.position, transform.position);
 
-            // if (distance < attackDistance)
-            // {
-            //     //Attack logic
-            //     movementInput = Vector2.zero;
-            //     OnAttackPressed?.Invoke();
-            //     yield return new WaitForSeconds(attackDelay);
-            //     StartCoroutine(ChaseAndAttack());
-            // }
-            // else
-            // {
+            if (distance < attackDistance)
+            {
+                //Attack logic
+                movementInput = Vector2.zero;
+                OnAttackPressed?.Invoke();
+                yield return new WaitForSeconds(attackDelay);
+                StartCoroutine(ChaseAndAttack());
+            }
+            else
+            {
                 //Chase logic
                 movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aIData);
                 yield return new WaitForSeconds(aiUpdateDelay);
                 StartCoroutine(ChaseAndAttack());
-            // }
+            }
 
         }
 

@@ -317,9 +317,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5021718640740796419}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.36126804, y: -0.25590038, z: -0.008931415}
-  m_LocalScale: {x: 1, y: -1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.34, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4817409751116546785}
@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eeee878530cd47bcab39902b30b891c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetDetectionRange: 15
+  targetDetectionRange: 20
   obstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 69768
@@ -768,10 +768,7 @@ GameObject:
   - component: {fileID: 5684453146365659639}
   - component: {fileID: 2217586190029096522}
   - component: {fileID: 3230566823640893638}
-  - component: {fileID: 7631353950134773027}
-  - component: {fileID: 6033134597020380744}
-  - component: {fileID: 2477267332070895206}
-  - component: {fileID: 6271098188076277613}
+  - component: {fileID: 4729296721409894618}
   m_Layer: 9
   m_Name: Enemy B (State Machine)
   m_TagString: Untagged
@@ -907,7 +904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682ef5db3ed56438793a3b2c09702043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustSpeed: 50
+  thrustSpeed: 25
 --- !u!114 &5183612295863981715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -970,7 +967,7 @@ MonoBehaviour:
   - {fileID: 2278693620350710684}
   - {fileID: 4736137589457329791}
   detectionDelay: 0.05
---- !u!114 &7631353950134773027
+--- !u!114 &4729296721409894618
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -979,107 +976,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8180175538297290714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42abba6cc608448c89a83ae3f70b8698, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aIData: {fileID: 5183612295863981715}
-  transitions:
-  - condition: {fileID: 11400000, guid: d5aed5399beb949b4a293604b2ae1c92, type: 2}
-    target: {fileID: 2477267332070895206}
-  movementDirectionSolver: {fileID: 8857363745243002931}
-  steeringBehaviours:
-  - {fileID: 1836401003255072778}
-  - {fileID: 4838340932611138947}
-  OnAttackPressed:
-    m_PersistentCalls:
-      m_Calls: []
-  OnMovementInput:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5684453146365659639}
-        m_TargetAssemblyTypeName: EnemyAgent, Assembly-CSharp
-        m_MethodName: set_MovementInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnPointerInput:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &6033134597020380744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8180175538297290714}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13d0c66f3a849475ab2bcdbd636d0358, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aIData: {fileID: 5183612295863981715}
-  transitions: []
-  movementDirectionSolver: {fileID: 8857363745243002931}
-  steeringBehaviours:
-  - {fileID: 1836401003255072778}
-  - {fileID: 4838340932611138947}
-  OnAttackPressed:
-    m_PersistentCalls:
-      m_Calls: []
-  OnMovementInput:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5684453146365659639}
-        m_TargetAssemblyTypeName: EnemyAgent, Assembly-CSharp
-        m_MethodName: set_MovementInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnPointerInput:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5684453146365659639}
-        m_TargetAssemblyTypeName: EnemyAgent, Assembly-CSharp
-        m_MethodName: set_PointerInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  indicator: {fileID: 5291020748135841799}
-  aiUpdateDelay: 0.06
---- !u!114 &2477267332070895206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8180175538297290714}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8556eb80eb8004577bc64e6c7bdaf6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   aIData: {fileID: 5183612295863981715}
-  transitions:
-  - condition: {fileID: 11400000, guid: 168c1eeabb87547cab0aeeb26a0bde21, type: 2}
-    target: {fileID: 6271098188076277613}
+  transitions: []
   movementDirectionSolver: {fileID: 8857363745243002931}
   steeringBehaviours:
   - {fileID: 1836401003255072778}
@@ -1129,49 +1030,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  indicator: {fileID: 304936414341452734}
-  aiUpdateDelay: 0.06
---- !u!114 &6271098188076277613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8180175538297290714}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02c11379a16ab448dae95feafd5c0e53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aIData: {fileID: 5183612295863981715}
-  transitions: []
-  movementDirectionSolver: {fileID: 8857363745243002931}
-  steeringBehaviours:
-  - {fileID: 1836401003255072778}
-  - {fileID: 4838340932611138947}
-  OnAttackPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5684453146365659639}
-        m_TargetAssemblyTypeName: EnemyAgent, Assembly-CSharp
-        m_MethodName: PerformAttack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnMovementInput:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPointerInput:
-    m_PersistentCalls:
-      m_Calls: []
   indicator: {fileID: 0}
+  aiUpdateDelay: 0.06
   attackDelay: 1
+  attackDistance: 10
 --- !u!1001 &3688446944875989799
 PrefabInstance:
   m_ObjectHideFlags: 0

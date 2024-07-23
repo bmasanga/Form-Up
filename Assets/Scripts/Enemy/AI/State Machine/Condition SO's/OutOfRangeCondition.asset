@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37dd8f8f9f71f4bbda8a4f4f7c52ea31, type: 3}
-  m_Name: LostSightCondition
+  m_Script: {fileID: 11500000, guid: 246f377e7821d40bc86e469ae1436a00, type: 3}
+  m_Name: OutOfRangeCondition
   m_EditorClassIdentifier: 
-  timeToWait: 5
-  timePassed: 0
+  attackRange: 15
