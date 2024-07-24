@@ -12,6 +12,9 @@ public class AttackState : State
     public override void OnEnable()
     {
         base.OnEnable();
+        movementInput = Vector2.zero;
+        OnMovementInput?.Invoke(movementInput);
+
         if (indicator)
         {
             indicator.SetActive(true);
@@ -31,11 +34,10 @@ public class AttackState : State
 
     public override void Update()
     {
-        if (aIData != null)
+        
+        if (aIData.currentTarget != null)
         {
             OnPointerInput?.Invoke(aIData.currentTarget.position);
-
-            float distance = Vector2.Distance(aIData.currentTarget.position, transform.position);
         }
 
         if (!isAttacking)
@@ -47,7 +49,6 @@ public class AttackState : State
     private IEnumerator Attack()
     {
         isAttacking = true;
-        movementInput = Vector2.zero;
         OnAttackPressed?.Invoke();
         yield return new WaitForSeconds(attackDelay);
         isAttacking = false;

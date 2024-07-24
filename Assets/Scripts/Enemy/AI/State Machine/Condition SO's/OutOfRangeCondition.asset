@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246f377e7821d40bc86e469ae1436a00, type: 3}
   m_Name: OutOfRangeCondition
   m_EditorClassIdentifier: 
-  attackRange: 15
+  attackRange: 10

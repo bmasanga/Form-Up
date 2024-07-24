@@ -28,26 +28,13 @@ public class ObjectiveState : State
         }
     }
 
-    // public override void Update()
-    // {
-    //     // Enemy AI movement based on Objective availability
-    //     if (aIData.currentTarget == null && aIData.GetObjectivesCount() > 0)
-    //     {
-    //         aIData.currentTarget = aIData.GetNextObjective();
-    //         StartCoroutine(NavigateToObjective());
-    //     }
-    //     else if (aIData.GetObjectivesCount() == 0)
-    //     {
-    //         // No more objectives
-    //         movementInput = Vector2.zero;
-    //     }
-
-    //     // Moving the Agent
-    //     OnMovementInput?.Invoke(movementInput);
-    // }
-
     public override void Update()
     {
+        if(aIData.GetObjectivesCount() > 0)
+        {
+            aIData.currentTarget = aIData.GetNextObjective();
+        }
+        
          //Enemy AI movement based on Target availability
         if (aIData.currentTarget != null)
         {
@@ -67,33 +54,6 @@ public class ObjectiveState : State
         //Moving the Agent
         OnMovementInput?.Invoke(movementInput);
     }
-
-    // private IEnumerator NavigateToObjective()
-    // {
-    //     while (aIData.currentTarget != null)
-    //     {
-    //         float distance = Vector2.Distance(aIData.currentTarget.position, transform.position);
-
-    //         if (distance < objectiveReachedThreshold)
-    //         {
-    //             // Objective Reached Logic
-    //             //aIData.RemoveCurrentObjective();
-    //             aIData.currentTarget = aIData.GetNextObjective();
-    //         }
-    //         else
-    //         {
-    //             // Navigate to Objective
-    //             movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aIData);
-    //         }
-
-    //         OnMovementInput?.Invoke(movementInput);
-    //         yield return new WaitForSeconds(aiUpdateDelay);
-    //     }
-
-    //     // No more objectives, stop moving
-    //     movementInput = Vector2.zero;
-    //     OnMovementInput?.Invoke(movementInput);
-    // }
 
     private IEnumerator NavigateToObjective()
     {
