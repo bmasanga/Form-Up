@@ -60,7 +60,10 @@ public class TargetDetector : Detector
         Gizmos.color = Color.magenta;
         foreach (var item in colliders)
         {
+            if(item != null)
+            {
             Gizmos.DrawSphere(item.position, 0.3f);
+            }
         }
     }
 }

@@ -26,15 +26,12 @@ public class ObjectiveState : State
         {
             indicator.SetActive(false);
         }
+        StopAllCoroutines();
+
     }
 
     public override void Update()
-    {
-        if(aIData.GetObjectivesCount() > 0)
-        {
-            aIData.currentTarget = aIData.GetNextObjective();
-        }
-        
+    {  
          //Enemy AI movement based on Target availability
         if (aIData.currentTarget != null)
         {
