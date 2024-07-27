@@ -748,7 +748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4133bd4ce714996bd112429612dd91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetReachedThreshold: 2
+  targetRechedThreshold: 0.5
   showGizmo: 1
 --- !u!1 &8180175538297290714
 GameObject:
@@ -981,9 +981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aIData: {fileID: 5183612295863981715}
-  transitions:
-  - condition: {fileID: 11400000, guid: 168c1eeabb87547cab0aeeb26a0bde21, type: 2}
-    target: {fileID: 7510372921514745822}
+  transitions: []
   movementDirectionSolver: {fileID: 8857363745243002931}
   steeringBehaviours:
   - {fileID: 1836401003255072778}

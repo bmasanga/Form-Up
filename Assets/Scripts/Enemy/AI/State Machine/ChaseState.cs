@@ -34,52 +34,26 @@ public class ChaseState : State
     }
 
     public override void Update()
-    {    
-         //Enemy AI movement based on Target availability
-        // if (aIData.currentTarget != null)
-        // {
-        //     //Looking at the Target
-        //     OnPointerInput?.Invoke(aIData.currentTarget.position);
-        //     if (following == false)
-        //     {
-        //         following = true;
-        //         StartCoroutine(ChaseAndAttack());
-        //     }
-        // }
-        // else if (aIData.GetTargetsCount() > 0)
-        // {
-        //     //Target acquisition logic
-        //     aIData.currentTarget = aIData.targets[0];
-        // }
-        // //Moving the Agent
-        // OnMovementInput?.Invoke(movementInput);
-
-        // Set the current target to the closest player target if available
-        if (aIData.targets != null && aIData.targets.Count > 0)
-        {
-            aIData.currentTarget = aIData.targets.OrderBy(target => Vector2.Distance(target.position, transform.position)).FirstOrDefault();
-        }
-        // else
-        // {
-        //     // Set the current target to the next objective if no player targets are detected
-        //     aIData.currentTarget = null;
-        // }
-
-        // Enemy AI movement based on target availability
+    {
+        //Enemy AI movement based on Target availability
         if (aIData.currentTarget != null)
         {
-            // Looking at the target
+            //Looking at the Target
             OnPointerInput?.Invoke(aIData.currentTarget.position);
-            if (!following)
+            if (following == false)
             {
                 following = true;
                 StartCoroutine(ChaseAndAttack());
             }
         }
-
-        // Moving the agent
+        else if (aIData.GetTargetsCount() > 0)
+        {
+            //Target acquisition logic
+            aIData.currentTarget = aIData.targets.OrderBy
+                    (target => Vector2.Distance(target.position, transform.position)).FirstOrDefault();
+        }
+        //Moving the Agent
         OnMovementInput?.Invoke(movementInput);
-
     }
 
     private IEnumerator ChaseAndAttack()
@@ -87,7 +61,7 @@ public class ChaseState : State
         if (aIData.currentTarget == null)
         {
             //Stopping Logic
-            //Debug.Log("Stopping");
+            Debug.Log("Stopping");
             movementInput = Vector2.zero;
             following = false;
             yield break;
