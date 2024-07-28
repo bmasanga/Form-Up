@@ -11,7 +11,7 @@ public class SeekBehaviour : SteeringBehaviour
     [SerializeField]
     private bool showGizmo = true;
 
-    bool reachedLastTarget = true;
+    // bool reachedLastTarget = true;
 
     //gizmo parameters
     private Vector2 targetPositionCached;
@@ -21,30 +21,43 @@ public class SeekBehaviour : SteeringBehaviour
     {
         //if we don't have a target stop seeking
         //else set a new target
-        if (reachedLastTarget)
-        {
-            if (aiData.targets == null || aiData.targets.Count <= 0)
-            {
-                aiData.currentTarget = null;
-                return (danger, interest);
-            }
-            else
-            {
-                reachedLastTarget = false;
-                aiData.currentTarget = aiData.targets.OrderBy
-                    (target => Vector2.Distance(target.position, transform.position)).FirstOrDefault();
-            }
+        // if (reachedLastTarget)
+        // {
+        //     if (aiData.targets == null || aiData.targets.Count <= 0)
+        //     {
+        //         aiData.currentTarget = null;
+        //         return (danger, interest);
+        //     }
+        //     else
+        //     {
+        //         reachedLastTarget = false;
+        //         aiData.currentTarget = aiData.targets.OrderBy
+        //             (target => Vector2.Distance(target.position, transform.position)).FirstOrDefault();
+        //     }
 
-        }
+        // }
 
         //cache the last position only if we still see the target (if the targets collection is not empty)
-        if (aiData.currentTarget != null && aiData.targets != null && aiData.targets.Contains(aiData.currentTarget))
-            targetPositionCached = aiData.currentTarget.position;
+        // if (aiData.currentTarget != null && aiData.targets != null && aiData.targets.Contains(aiData.currentTarget))
+        //     targetPositionCached = aiData.currentTarget.position;
+
+        if (aiData.currentTarget != null)
+        {
+            if (aiData.targets != null && aiData.targets.Contains(aiData.currentTarget))
+            {
+                targetPositionCached = aiData.currentTarget.position;
+            }
+            else if (aiData.objectives != null && aiData.objectives.Contains(aiData.currentTarget))
+            {
+                targetPositionCached = aiData.currentTarget.position;
+            }
+        }
+
 
         //First check if we have reached the target
         if (Vector2.Distance(transform.position, targetPositionCached) < targetRechedThreshold)
         {
-            reachedLastTarget = true;
+            // reachedLastTarget = true;
             aiData.currentTarget = null;
             return (danger, interest);
         }
@@ -70,28 +83,28 @@ public class SeekBehaviour : SteeringBehaviour
         return (danger, interest);
     }
 
-    private void OnDrawGizmos()
-    {
+    // private void OnDrawGizmos()
+    // {
 
-        if (showGizmo == false)
-            return;
-        Gizmos.DrawSphere(targetPositionCached, 0.2f);
+    //     if (showGizmo == false)
+    //         return;
+    //     Gizmos.DrawSphere(targetPositionCached, 0.2f);
 
-        if (Application.isPlaying && interestsTemp != null)
-        {
-            if (interestsTemp != null)
-            {
-                Gizmos.color = Color.green;
-                for (int i = 0; i < interestsTemp.Length; i++)
-                {
-                    Gizmos.DrawRay(transform.position, Directions.eightDirections[i] * interestsTemp[i]*2);
-                }
-                if (reachedLastTarget == false)
-                {
-                    Gizmos.color = Color.red;
-                    Gizmos.DrawSphere(targetPositionCached, 0.1f);
-                }
-            }
-        }
-    }
+    //     if (Application.isPlaying && interestsTemp != null)
+    //     {
+    //         if (interestsTemp != null)
+    //         {
+    //             Gizmos.color = Color.green;
+    //             for (int i = 0; i < interestsTemp.Length; i++)
+    //             {
+    //                 Gizmos.DrawRay(transform.position, Directions.eightDirections[i] * interestsTemp[i]*2);
+    //             }
+    //             if (reachedLastTarget == false)
+    //             {
+    //                 Gizmos.color = Color.red;
+    //                 Gizmos.DrawSphere(targetPositionCached, 0.1f);
+    //             }
+    //         }
+    //     }
+    // }
 }

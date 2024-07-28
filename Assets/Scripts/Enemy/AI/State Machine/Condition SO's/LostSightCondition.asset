@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37dd8f8f9f71f4bbda8a4f4f7c52ea31, type: 3}
   m_Name: LostSightCondition
   m_EditorClassIdentifier: 
-  timeToWait: 5
+  timeToWait: 3
   timePassed: 0

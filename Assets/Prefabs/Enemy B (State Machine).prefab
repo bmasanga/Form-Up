@@ -769,7 +769,7 @@ GameObject:
   - component: {fileID: 2217586190029096522}
   - component: {fileID: 3230566823640893638}
   - component: {fileID: 4729296721409894618}
-  - component: {fileID: 7510372921514745822}
+  - component: {fileID: 6169066816405292393}
   m_Layer: 9
   m_Name: Enemy B (State Machine)
   m_TagString: Untagged
@@ -981,7 +981,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aIData: {fileID: 5183612295863981715}
-  transitions: []
+  transitions:
+  - condition: {fileID: 11400000, guid: b65d23fbcff7049c1917d9bbbac05ced, type: 2}
+    target: {fileID: 6169066816405292393}
   movementDirectionSolver: {fileID: 8857363745243002931}
   steeringBehaviours:
   - {fileID: 1836401003255072778}
@@ -1035,7 +1037,7 @@ MonoBehaviour:
   aiUpdateDelay: 0.06
   attackDelay: 1
   attackDistance: 10
---- !u!114 &7510372921514745822
+--- !u!114 &6169066816405292393
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1044,12 +1046,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8180175538297290714}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02c11379a16ab448dae95feafd5c0e53, type: 3}
+  m_Script: {fileID: 11500000, guid: 13d0c66f3a849475ab2bcdbd636d0358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   aIData: {fileID: 5183612295863981715}
   transitions:
-  - condition: {fileID: 11400000, guid: 78372d84e12eb4dd79c946a77ca7615b, type: 2}
+  - condition: {fileID: 11400000, guid: d5aed5399beb949b4a293604b2ae1c92, type: 2}
     target: {fileID: 4729296721409894618}
   movementDirectionSolver: {fileID: 8857363745243002931}
   steeringBehaviours:
@@ -1057,19 +1059,7 @@ MonoBehaviour:
   - {fileID: 4838340932611138947}
   OnAttackPressed:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5684453146365659639}
-        m_TargetAssemblyTypeName: EnemyAgent, Assembly-CSharp
-        m_MethodName: PerformAttack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnMovementInput:
     m_PersistentCalls:
       m_Calls:
@@ -1100,8 +1090,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  indicator: {fileID: 304936414341452734}
-  attackDelay: 1
+  indicator: {fileID: 5291020748135841799}
+  aiUpdateDelay: 0.06
 --- !u!1001 &3688446944875989799
 PrefabInstance:
   m_ObjectHideFlags: 0

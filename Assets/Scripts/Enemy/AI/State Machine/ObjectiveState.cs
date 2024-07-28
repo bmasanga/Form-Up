@@ -27,6 +27,7 @@ public class ObjectiveState : State
             indicator.SetActive(false);
         }
         StopAllCoroutines();
+        aIData.currentTarget = null;
 
     }
 

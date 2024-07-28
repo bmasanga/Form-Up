@@ -31,6 +31,7 @@ public class ChaseState : State
             indicator.SetActive(false);
         }
         StopAllCoroutines();
+        aIData.currentTarget = null;
     }
 
     public override void Update()
@@ -46,7 +47,7 @@ public class ChaseState : State
                 StartCoroutine(ChaseAndAttack());
             }
         }
-        else if (aIData.GetTargetsCount() > 0)
+        if (aIData.GetTargetsCount() > 0)
         {
             //Target acquisition logic
             aIData.currentTarget = aIData.targets.OrderBy
