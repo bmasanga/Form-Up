@@ -31,11 +31,13 @@ public class ChaseState : State
             indicator.SetActive(false);
         }
         StopAllCoroutines();
-        aIData.currentTarget = null;
+        //aIData.currentTarget = null;
     }
 
     public override void Update()
     {
+        
+        UpdateMovementInput();
         //Enemy AI movement based on Target availability
         if (aIData.currentTarget != null)
         {
@@ -54,7 +56,7 @@ public class ChaseState : State
                     (target => Vector2.Distance(target.position, transform.position)).FirstOrDefault();
         }
         //Moving the Agent
-        OnMovementInput?.Invoke(movementInput);
+        // OnMovementInput?.Invoke(movementInput);
     }
 
     private IEnumerator ChaseAndAttack()
@@ -64,6 +66,7 @@ public class ChaseState : State
             //Stopping Logic
             Debug.Log("Stopping");
             movementInput = Vector2.zero;
+            OnMovementInput?.Invoke(movementInput);
             following = false;
             yield break;
         }
@@ -75,6 +78,7 @@ public class ChaseState : State
             {
                 //Attack logic
                 movementInput = Vector2.zero;
+                OnMovementInput?.Invoke(movementInput);
                 OnAttackPressed?.Invoke();
                 yield return new WaitForSeconds(attackDelay);
                 StartCoroutine(ChaseAndAttack());
@@ -83,12 +87,25 @@ public class ChaseState : State
             {
                 //Chase logic
                 movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aIData);
+                OnMovementInput?.Invoke(movementInput);
                 yield return new WaitForSeconds(aiUpdateDelay);
                 StartCoroutine(ChaseAndAttack());
             }
 
         }
 
+    }
+
+    private void UpdateMovementInput()
+    {
+        if (aIData.currentTarget != null)
+        {
+            movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aIData);
+        }
+        else
+        {
+            movementInput = Vector2.zero;
+        }
     }
 
 }
