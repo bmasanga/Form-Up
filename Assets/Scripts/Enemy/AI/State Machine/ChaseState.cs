@@ -1,18 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Animations;
-using UnityEngine.Events;
 
 public class ChaseState : State
 {
-    [SerializeField] GameObject indicator;
-    [SerializeField] float aiUpdateDelay = 0.06f; 
-    [SerializeField] float attackDelay = 1f;
-    [SerializeField] float attackDistance = 8f;
+    [SerializeField] private GameObject indicator;
+    [SerializeField] private float aiUpdateDelay = 0.06f; 
+    [SerializeField] private float attackDelay = 1f;
+    [SerializeField] private float attackDistance = 8f;
 
-    bool following = false;
+    private bool isChasing = false;
 
     public override void OnEnable()
     {
@@ -31,82 +28,56 @@ public class ChaseState : State
             indicator.SetActive(false);
         }
         StopAllCoroutines();
-        //aIData.currentTarget = null;
+        isChasing = false;
     }
 
     public override void Update()
     {
-        
-        UpdateMovementInput();
-        //Enemy AI movement based on Target availability
+        UpdateTarget();
+        if (!isChasing && aIData.currentTarget != null)
+        {
+            isChasing = true;
+            StartCoroutine(ChaseAndAttack());
+        }
+        OnMovementInput?.Invoke(movementInput);
+    }
+
+    private void UpdateTarget()
+    {
+        if (aIData.currentTarget == null && aIData.GetTargetsCount() > 0)
+        {
+            aIData.currentTarget = aIData.targets.OrderBy(target => Vector2.Distance(target.position, transform.position)).FirstOrDefault();
+        }
+
         if (aIData.currentTarget != null)
         {
-            //Looking at the Target
             OnPointerInput?.Invoke(aIData.currentTarget.position);
-            if (following == false)
-            {
-                following = true;
-                StartCoroutine(ChaseAndAttack());
-            }
         }
-        if (aIData.GetTargetsCount() > 0)
-        {
-            //Target acquisition logic
-            aIData.currentTarget = aIData.targets.OrderBy
-                    (target => Vector2.Distance(target.position, transform.position)).FirstOrDefault();
-        }
-        //Moving the Agent
-        // OnMovementInput?.Invoke(movementInput);
     }
 
     private IEnumerator ChaseAndAttack()
     {
-        if (aIData.currentTarget == null)
-        {
-            //Stopping Logic
-            Debug.Log("Stopping");
-            movementInput = Vector2.zero;
-            OnMovementInput?.Invoke(movementInput);
-            following = false;
-            yield break;
-        }
-        else
+        while (aIData.currentTarget != null)
         {
             float distance = Vector2.Distance(aIData.currentTarget.position, transform.position);
 
             if (distance < attackDistance)
             {
-                //Attack logic
                 movementInput = Vector2.zero;
                 OnMovementInput?.Invoke(movementInput);
                 OnAttackPressed?.Invoke();
                 yield return new WaitForSeconds(attackDelay);
-                StartCoroutine(ChaseAndAttack());
             }
             else
             {
-                //Chase logic
                 movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aIData);
                 OnMovementInput?.Invoke(movementInput);
                 yield return new WaitForSeconds(aiUpdateDelay);
-                StartCoroutine(ChaseAndAttack());
             }
-
         }
 
+        movementInput = Vector2.zero;
+        OnMovementInput?.Invoke(movementInput);
+        isChasing = false;
     }
-
-    private void UpdateMovementInput()
-    {
-        if (aIData.currentTarget != null)
-        {
-            movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aIData);
-        }
-        else
-        {
-            movementInput = Vector2.zero;
-        }
-    }
-
 }
-
