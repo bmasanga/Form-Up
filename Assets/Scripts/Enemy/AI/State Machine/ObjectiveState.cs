@@ -38,11 +38,11 @@ public class ObjectiveState : State
         {
             // Looking at the Target
             OnPointerInput?.Invoke(aIData.currentTarget.position);
-            if (navigating == false)
-            {
-                navigating = true;
-                StartCoroutine(NavigateToObjective());
-            }
+            // if (navigating == false)
+            // {
+            //     navigating = true;
+            //     StartCoroutine(NavigateToObjective());
+            // }
         }
         else if (aIData.GetObjectivesCount() > 0)
         {
@@ -52,28 +52,28 @@ public class ObjectiveState : State
         }
 
         // Moving the Agent
-        OnMovementInput?.Invoke(movementInput);
+        // OnMovementInput?.Invoke(movementInput);
     }
 
-    private IEnumerator NavigateToObjective()
-    {
-        while (true)
-        {
-            if (aIData.currentTarget == null)
-            {
-                // Stopping Logic
-                movementInput = Vector2.zero;
-                navigating = false;
-                yield break;
-            }
-            else
-            {
-                // Navigate logic
-                movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aIData);
-                yield return new WaitForSeconds(aiUpdateDelay);
-            }
-        }
-    }
+    // private IEnumerator NavigateToObjective()
+    // {
+    //     while (true)
+    //     {
+    //         if (aIData.currentTarget == null)
+    //         {
+    //             // Stopping Logic
+    //             movementInput = Vector2.zero;
+    //             navigating = false;
+    //             yield break;
+    //         }
+    //         else
+    //         {
+    //             // Navigate logic
+    //             movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aIData);
+    //             yield return new WaitForSeconds(aiUpdateDelay);
+    //         }
+    //     }
+    // }
 
     private void UpdateMovementInput()
     {
@@ -85,5 +85,6 @@ public class ObjectiveState : State
         {
             movementInput = Vector2.zero;
         }
+        OnMovementInput?.Invoke(movementInput);
     }
 }
