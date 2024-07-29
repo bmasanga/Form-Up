@@ -131,7 +131,7 @@ MonoBehaviour:
   detectionRadius: 15
   layerMask:
     serializedVersion: 2
-    m_Bits: 4104
+    m_Bits: 20488
   showGizmos: 1
 --- !u!1 &2521327501201738624
 GameObject:
@@ -470,7 +470,7 @@ MonoBehaviour:
   targetDetectionRange: 20
   obstaclesLayerMask:
     serializedVersion: 2
-    m_Bits: 69768
+    m_Bits: 86152
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 65664
@@ -905,7 +905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682ef5db3ed56438793a3b2c09702043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustSpeed: 25
+  thrustSpeed: 40
 --- !u!114 &5183612295863981715
 MonoBehaviour:
   m_ObjectHideFlags: 0

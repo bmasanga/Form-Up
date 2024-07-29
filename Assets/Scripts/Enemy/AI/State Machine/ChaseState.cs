@@ -1,3 +1,4 @@
+// ChaseState.cs
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -42,9 +43,26 @@ public class ChaseState : State
         OnMovementInput?.Invoke(movementInput);
     }
 
+    // private void UpdateTarget()
+    // {
+    //     if (aIData.GetTargetsCount() > 0)
+    //     {
+    //         Transform closestTarget = aIData.targets.OrderBy(target => Vector2.Distance(target.position, transform.position)).FirstOrDefault();
+    //         if (aIData.currentTarget == null || closestTarget != aIData.currentTarget)
+    //         {
+    //             aIData.currentTarget = closestTarget;
+    //             OnPointerInput?.Invoke(aIData.currentTarget.position);
+    //         }
+    //     }
+    //     else
+    //     {
+    //         aIData.currentTarget = null;
+    //     }
+    // }
+
     private void UpdateTarget()
     {
-        if (aIData.currentTarget == null && aIData.GetTargetsCount() > 0)
+        if (aIData.GetTargetsCount() > 0)
         {
             aIData.currentTarget = aIData.targets.OrderBy(target => Vector2.Distance(target.position, transform.position)).FirstOrDefault();
         }
