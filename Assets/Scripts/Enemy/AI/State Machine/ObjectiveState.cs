@@ -43,7 +43,7 @@ public class ObjectiveState : State
         {
             // Target acquisition logic
             aIData.currentTarget = aIData.GetNextObjective();
-            Debug.Log("Current Target Objective Position: " + aIData.currentTarget.position);
+            //Debug.Log("Current Target Objective Position: " + aIData.currentTarget.position);
         }
 
     }
