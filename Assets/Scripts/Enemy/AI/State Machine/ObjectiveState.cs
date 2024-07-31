@@ -4,9 +4,9 @@ using UnityEngine;
 public class ObjectiveState : State
 {
     [SerializeField] GameObject indicator;
-    [SerializeField] float aiUpdateDelay = 0.06f;
+    //[SerializeField] float aiUpdateDelay = 0.06f;
 
-    bool navigating = false;
+    //bool navigating = false;
 
     public override void OnEnable()
     {

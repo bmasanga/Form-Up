@@ -24,7 +24,7 @@ TagManager:
   - PlayerShield
   - PlayerBuilding
   - EnemyBuilding
-  - 
+  - Minimap
   - 
   - 
   - 
@@ -48,6 +48,9 @@ TagManager:
   - name: Clouds
     uniqueID: 2281912231
     locked: 0
+  - name: Minimap
+    uniqueID: 1938231817
+    locked: 0
   - name: Obstacle
     uniqueID: 2710372469
     locked: 0
@@ -68,4 +71,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3290700445
+    locked: 0
+  - name: UI
+    uniqueID: 1673622763
     locked: 0

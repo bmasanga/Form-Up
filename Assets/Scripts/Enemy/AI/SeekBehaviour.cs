@@ -24,13 +24,13 @@ public class SeekBehaviour : SteeringBehaviour
             {
                 targetPositionCached = aiData.currentTarget.position;
                 reachedLastTarget = false;
-                Debug.Log("targetPositionCached: " + targetPositionCached);
+                //Debug.Log("targetPositionCached: " + targetPositionCached);
             }
             else if (aiData.objectives.Contains(aiData.currentTarget))
             {
                 targetPositionCached = aiData.currentTarget.position;
                 reachedLastTarget = false;
-                Debug.Log("objectivePositionCached: " + targetPositionCached);
+                //Debug.Log("objectivePositionCached: " + targetPositionCached);
 
             }
         }
@@ -40,7 +40,6 @@ public class SeekBehaviour : SteeringBehaviour
         {
             reachedLastTarget = true;
             aiData.currentTarget = null;
-            Debug.Log("target reached");
             return (danger, interest);
         }
 
