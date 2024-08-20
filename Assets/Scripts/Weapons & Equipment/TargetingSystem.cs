@@ -18,7 +18,7 @@ public class TargetingSystem : MonoBehaviour
     void Awake()
     {
         targetingLaser = GetComponentInChildren<TargetingLaser>();
-        targetingLaser.SetLaserColor(Color.green);
+        targetingLaser.SetLaserColor(Color.red);
         agent = GetComponentInParent<Agent>();
     }
 
@@ -45,7 +45,7 @@ public class TargetingSystem : MonoBehaviour
                 if (potentialTargets[other.gameObject] >= targetLockTime)
                 {
                     lockedTarget = other.gameObject;
-                    targetingLaser.SetLaserColor(Color.red);
+                    targetingLaser.SetLaserColor(Color.green);
                     Debug.Log("Target locked: " + lockedTarget.name);
                 }
             }
@@ -125,7 +125,7 @@ public class TargetingSystem : MonoBehaviour
     public void ResetLockedTarget()
     {
         lockedTarget = null;
-        targetingLaser.SetLaserColor(Color.green);
+        targetingLaser.SetLaserColor(Color.red);
         //Debug.Log("Resetting");
     }
 }

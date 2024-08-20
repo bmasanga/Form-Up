@@ -10,8 +10,8 @@ public class ObstacleDetector : Detector
     [SerializeField]
     private LayerMask layerMask;
 
-    [SerializeField]
-    private bool showGizmos = true;
+    //[SerializeField]
+    //private bool showGizmos = true;
 
     Collider2D[] colliders;
 

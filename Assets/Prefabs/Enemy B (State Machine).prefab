@@ -878,7 +878,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 25
   currentHealth: 0
-  shield: {fileID: 3150823752296358314}
   applyCameraShake: 0
   isPlayer: 0
   score: 100
@@ -1092,7 +1091,7 @@ MonoBehaviour:
   indicator: {fileID: 304936414341452734}
   aiUpdateDelay: 0.06
   attackDelay: 1
-  attackDistance: 10
+  attackDistance: 12
 --- !u!1 &9003176599106411631
 GameObject:
   m_ObjectHideFlags: 0

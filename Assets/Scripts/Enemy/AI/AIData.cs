@@ -10,27 +10,42 @@ public class AIData : MonoBehaviour
     public Transform currentTarget;
     public List<Transform> objectives;
 
+    ObjectiveController objectiveController;
+
     public int GetTargetsCount() => targets == null ? 0 : targets.Count;
 
     public int GetObjectivesCount() => objectives == null ? 0 : objectives.Count;
 
-    //private Objective _objective;
-
-    void Start()
+    void OnEnable()
     {
-        //_objective = FindObjectOfType<Objective>();
-        //_objective.OnDestroyObjective.AddListener(RemoveObjective);
+        objectiveController = FindObjectOfType<ObjectiveController>();
+        if (objectiveController != null)
+        {
+            objectiveController.OnObjectiveDestroyed.AddListener(RemoveObjective);
+        }
 
     }
 
-    // void OnDestroy()
-    // {
-    //     if(_objective != null)
-    //     {
-    //         _objective.OnDestroyObjective.RemoveListener(RemoveObjective);
+    void OnDestroy()
+    {
+        if (objectiveController != null)
+        {
+            objectiveController.OnObjectiveDestroyed.RemoveListener(RemoveObjective);
+        }
+    }
 
-    //     }
-    // }
+    public Transform GetNextTarget()
+    {
+        for (int i = 0; i <GetTargetsCount(); i++)
+        {
+            if (targets[i] != null)
+            {
+                return targets[i];
+            }
+        }
+        return null;
+    }
+    
     
     public Transform GetNextObjective()
     {

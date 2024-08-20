@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(EnemyAI2), typeof(EnemyAgent))]
+//[RequireComponent(typeof(EnemyAI2), typeof(EnemyAgent))]
 
 public class State : MonoBehaviour
 {

@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     [SerializeField] float maxHealth = 50f;
     [SerializeField] float currentHealth;
 
-    [SerializeField] Shield shield; 
+    //[SerializeField] Shield shield; 
 
     [SerializeField] bool applyCameraShake;
     [SerializeField] bool isPlayer = false;
