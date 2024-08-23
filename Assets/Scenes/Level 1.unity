@@ -8002,46 +8002,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 409603346963770629, guid: 9a733e698a4c2494b8de3ffcc0aebd5e, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 409603346963770629, guid: 9a733e698a4c2494b8de3ffcc0aebd5e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 735477471797264819, guid: 9a733e698a4c2494b8de3ffcc0aebd5e, type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 735477471797264819, guid: 9a733e698a4c2494b8de3ffcc0aebd5e, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1938231817
-      objectReference: {fileID: 0}
-    - target: {fileID: 1293124784745471748, guid: 9a733e698a4c2494b8de3ffcc0aebd5e, type: 3}
-      propertyPath: heatPerShot
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1293124784745471748, guid: 9a733e698a4c2494b8de3ffcc0aebd5e, type: 3}
-      propertyPath: weaponActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1470930450554699324, guid: 9a733e698a4c2494b8de3ffcc0aebd5e, type: 3}
-      propertyPath: maxHealth
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2674859587932423177, guid: 9a733e698a4c2494b8de3ffcc0aebd5e, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2674859587932423177, guid: 9a733e698a4c2494b8de3ffcc0aebd5e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3105095067516205489, guid: 9a733e698a4c2494b8de3ffcc0aebd5e, type: 3}
-      propertyPath: laserLength
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 5219912919521325378, guid: 9a733e698a4c2494b8de3ffcc0aebd5e, type: 3}
       propertyPath: m_Name
       value: Player A
