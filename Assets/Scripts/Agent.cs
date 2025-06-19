@@ -3,10 +3,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
+using Unity.Netcode;
 
 [RequireComponent(typeof(PlayerInput))]
 
-public class Agent : MonoBehaviour
+public class Agent : NetworkBehaviour
 {
     [SerializeField] float contollerDeadzone = 0.1f;
 
@@ -98,17 +99,20 @@ public class Agent : MonoBehaviour
 
     private void Update()
     {
+        if (!IsOwner) return;
         agentMover.moveInput = moveInput;
         RotateTowardPointer();
     }
 
     public void OnMovePerformed(Vector2 input)
     {
+        if (!IsOwner) return;
         moveInput = input;
     }
 
     public void OnLookPerformed(Vector2 input)
     {
+        if (!IsOwner) return;
         lookInput = input;
     }
 
@@ -143,45 +147,53 @@ public class Agent : MonoBehaviour
 
     public void OnFirePerformed()
     {
+        if (!IsOwner) return;
         if (!isAlive) return;
         isFiring = true;
     }
 
     public void OnFireCanceled()
     {
+        if (!IsOwner) return;
         isFiring = false;
     }
 
     public void OnActionPerformed()
     {
+        if (!IsOwner) return;
         if (!isAlive) return;
         isActioning = true;
     }
 
     public void OnActionCanceled()
     {
+        if (!IsOwner) return;
         isActioning = false;
     }
 
     public void OnTogglePerformed()
     {
+        if (!IsOwner) return;
         if (!isAlive) return;
         isToggling = true;
     }
 
     public void OnToggleCanceled()
     {
+        if (!IsOwner) return;
         isToggling = false;
     }
 
     public void OnTargetPerformed()
     {
+        if (!IsOwner) return;
         if (!isAlive) return;
         isTargeting = true;
     }
 
     public void OnTargetCanceled()
     {
+        if (!IsOwner) return;
         isTargeting = false;
     }
 
