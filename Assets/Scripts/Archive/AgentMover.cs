@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class AgentMover : MonoBehaviour
+public class AgentMover : NetworkBehaviour
 {
     [Header("Movement Speeds")]
     [SerializeField] float forwardThrustSpeed = 1.0f;
@@ -32,6 +33,7 @@ public class AgentMover : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!IsServer) return;
         Thrust();
     }
 

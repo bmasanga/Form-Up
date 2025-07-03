@@ -37,6 +37,18 @@ public class Agent : NetworkBehaviour
         set => _moveInput = value;
     }
 
+    [ServerRpc]
+    void SubmitInputServerRpc(Vector2 moveInput, Vector2 lookInput)
+    {
+        this.moveInput = moveInput;
+        this.lookInput = lookInput;
+
+        if (agentMover != null)
+        {
+            agentMover.moveInput = moveInput;
+        }
+    }
+
     private void Awake()
     {
         agentMover = GetComponent<AgentMover>();
@@ -100,8 +112,9 @@ public class Agent : NetworkBehaviour
     private void Update()
     {
         if (!IsOwner) return;
-        agentMover.moveInput = moveInput;
-        RotateTowardPointer();
+        //agentMover.moveInput = moveInput;
+        SubmitInputServerRpc(moveInput, lookInput); // send inputs to server
+        //RotateTowardPointer();
     }
 
     public void OnMovePerformed(Vector2 input)
@@ -150,6 +163,7 @@ public class Agent : NetworkBehaviour
         if (!IsOwner) return;
         if (!isAlive) return;
         isFiring = true;
+        Debug.Log("Agent is firing!");
     }
 
     public void OnFireCanceled()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1238288569336629799}
   - component: {fileID: 5487642483872530544}
   m_Layer: 7
-  m_Name: Blaster Canon
+  m_Name: Old Blaster Canon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,5 +57,3 @@ MonoBehaviour:
   overheatedCooldownRate: 1
   currentHeat: 0
   overheated: 0
-  autoFire: 0
-  isFiring: 0

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0081873daf12e4281b1cb063e60abc88, type: 3}
+  m_Name: BasicCannon
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 675338409100015005, guid: 9f91a0cb4c61f4525a3f1cba5ae26544, type: 3}
+  projectileSpeed: 30
+  projectileLifetime: 3
+  damage: 10
+  fireRate: 1
+  heatPerShot: 1
+  maxHeat: 10
+  cooldownRate: 0.5
