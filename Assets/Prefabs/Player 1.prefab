@@ -19512,7 +19512,7 @@ GameObject:
   - component: {fileID: 8084294406416037520}
   - component: {fileID: 6168637737959299759}
   m_Layer: 7
-  m_Name: Player Test
+  m_Name: Player 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25075,6 +25075,10 @@ PrefabInstance:
     - target: {fileID: 6671973622188467930, guid: 1191e35cde98d4e1a861b6f7e04aa42f, type: 3}
       propertyPath: m_Name
       value: Individual UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671973622188467930, guid: 1191e35cde98d4e1a861b6f7e04aa42f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6902123412289988374, guid: 1191e35cde98d4e1a861b6f7e04aa42f, type: 3}
       propertyPath: m_PresetInfoIsWorld

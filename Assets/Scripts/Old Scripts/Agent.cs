@@ -114,7 +114,7 @@ public class Agent : NetworkBehaviour
         if (!IsOwner) return;
         //agentMover.moveInput = moveInput;
         SubmitInputServerRpc(moveInput, lookInput); // send inputs to server
-        //RotateTowardPointer();
+        RotateTowardPointer();
     }
 
     public void OnMovePerformed(Vector2 input)
