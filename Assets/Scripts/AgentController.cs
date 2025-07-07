@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour, IInputReceivable
+public class AgentController : MonoBehaviour, IInputReceivable
 {
     private IMoveable moveController;
     private ILookable lookController;
@@ -20,11 +20,6 @@ public class CharacterController : MonoBehaviour, IInputReceivable
     public void SetMoveInput(Vector2 input)
     {
         moveController?.Move(input);
-    }
-
-    public void SetLookInput(Vector2 input)
-    {
-        lookController?.SetLookDirection(input, isWorldPosition: false); // fallback
     }
 
     public void SetLookInput(Vector2 input, bool isWorldPosition)

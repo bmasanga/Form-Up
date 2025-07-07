@@ -32,3 +32,7 @@ public class MoveController : MonoBehaviour, IMoveable
         rb.AddForce(force, ForceMode2D.Force);
     }
 }
+
+
+
+    

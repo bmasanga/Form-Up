@@ -1624,11 +1624,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   m_CustomBlends: {fileID: 11400000, guid: 46f7a2ceb44ab4abd9dec32f516d76d8, type: 2}
-  m_ParentHash:
-  - m_Hash: -397766897
-    m_ParentHash: 756556552
-  - m_Hash: 581488360
-    m_ParentHash: 756556552
+  m_ParentHash: []
 --- !u!1001 &368939084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1708,7 +1704,7 @@ GameObject:
   m_Component:
   - component: {fileID: 382281700}
   m_Layer: 0
-  m_Name: Cameras
+  m_Name: Player Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1723,7 +1719,7 @@ Transform:
   m_GameObject: {fileID: 382281699}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1741241, y: -1.4939206, z: 2.3940666}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

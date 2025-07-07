@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5535471190025871529}
   - component: {fileID: 4285462086676380494}
   m_Layer: 7
-  m_Name: playerShip2_orange
+  m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,8 +189,9 @@ GameObject:
   - component: {fileID: 5382802330165531658}
   - component: {fileID: 8794118553031170982}
   - component: {fileID: 7526295654373781015}
+  - component: {fileID: 7231250265779026383}
   m_Layer: 7
-  m_Name: Player 2
+  m_Name: Player v2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,7 +460,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1334bd30b6254462cbab89bbca413507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 750
+  turnSpeed: 200
+  minInputMagnitude: 0.1
+--- !u!114 &7231250265779026383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5219912919521325378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ceb4d42e9d245d9a1032efa9599278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6712365394272526127
 GameObject:
   m_ObjectHideFlags: 0
