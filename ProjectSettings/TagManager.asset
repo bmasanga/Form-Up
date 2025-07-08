@@ -45,9 +45,6 @@ TagManager:
   - name: Background
     uniqueID: 3713419689
     locked: 0
-  - name: Clouds
-    uniqueID: 2281912231
-    locked: 0
   - name: Minimap
     uniqueID: 1938231817
     locked: 0
@@ -71,6 +68,9 @@ TagManager:
     locked: 0
   - name: PlayerProjectile
     uniqueID: 3120929081
+    locked: 0
+  - name: Foreground
+    uniqueID: 2281912231
     locked: 0
   - name: UI
     uniqueID: 1673622763

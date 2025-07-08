@@ -6,16 +6,21 @@ public class AgentController : MonoBehaviour, IInputReceivable
 {
     private IMoveable moveController;
     private ILookable lookController;
+    private IWeapon weapon;
     private PlayerInputController inputController;
+
+    private bool isFiring = false;
 
     private void Awake()
     {
         moveController = GetComponent<IMoveable>();
         lookController = GetComponent<ILookable>();
         inputController = GetComponent<PlayerInputController>();
+        weapon = GetComponentInChildren<IWeapon>();
 
         inputController.Initialize(this);
     }
+
 
     public void SetMoveInput(Vector2 input)
     {
@@ -29,7 +34,7 @@ public class AgentController : MonoBehaviour, IInputReceivable
 
     public void SetFire(bool isPressed)
     {
-        // Hook to weapon system
+        isFiring = isPressed;
     }
 
     public void SetAction(bool isPressed)
@@ -45,5 +50,13 @@ public class AgentController : MonoBehaviour, IInputReceivable
     public void SetTarget(bool isPressed)
     {
         // Hook to targeting system
+    }
+
+    private void FixedUpdate()
+    {
+        if (isFiring)
+        {
+            weapon?.Fire();
+        }
     }
 }

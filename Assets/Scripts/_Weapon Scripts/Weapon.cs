@@ -45,8 +45,8 @@ public abstract class Weapon : MonoBehaviour, IWeapon
 
     private bool CanFire()
     {
-        return Time.time >= lastFireTime + config.fireRate
-            && !overheated;
+        float secondsBetweenShots = 1f / config.fireRate;
+        return Time.time >= lastFireTime + secondsBetweenShots && !overheated;
     }
 
     private void AddHeat()

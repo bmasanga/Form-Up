@@ -6,30 +6,21 @@ using Cinemachine;
 
 public class PlayerCameraSetup : NetworkBehaviour
 {
+    [SerializeField] private GameObject cameraPrefab;
+
     private GameObject playerCameraInstance;
 
     public override void OnNetworkSpawn()
     {
-        if (IsOwner)
+        if (IsOwner && cameraPrefab != null)
         {
-            // Load the camera prefab from Resources
-            GameObject cameraPrefab = Resources.Load<GameObject>("PlayerCamera");
+            playerCameraInstance = Instantiate(cameraPrefab);
 
-            if (cameraPrefab != null)
+            var vcam = playerCameraInstance.GetComponentInChildren<CinemachineVirtualCamera>();
+            if (vcam != null)
             {
-                playerCameraInstance = Instantiate(cameraPrefab);
-
-                // Find the virtual camera in the prefab
-                CinemachineVirtualCamera vcam = playerCameraInstance.GetComponentInChildren<CinemachineVirtualCamera>();
-                if (vcam != null)
-                {
-                    vcam.Follow = transform;
-                    vcam.LookAt = transform; // optional, depending on how you want to aim
-                }
-            }
-            else
-            {
-                Debug.LogError("PlayerCameraRig prefab not found in Resources folder.");
+                vcam.Follow = transform;
+                // vcam.LookAt = transform;
             }
         }
     }
