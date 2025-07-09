@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
-    [SerializeField] Transform objectToFollow;
-    RectTransform rectTransform;
+    private RectTransform rectTransform;
+    private Transform objectToFollow;
 
-    void Awake() 
+    void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+        // Find the first SpriteRenderer in children of root
+        var sprite = transform.root.GetComponentInChildren<SpriteRenderer>();
+        if (sprite != null)
+        {
+            objectToFollow = sprite.transform;
+        }
     }
 
     void Update()
@@ -18,7 +24,6 @@ public class Billboard : MonoBehaviour
         {
             rectTransform.anchoredPosition = objectToFollow.localPosition;
             rectTransform.rotation = Quaternion.identity;
-
         }
     }
 }

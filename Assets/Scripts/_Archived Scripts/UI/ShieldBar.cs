@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ShieldBar : MonoBehaviour
 {
     [SerializeField] Slider slider;
-    [SerializeField] Shield shield;
+    [SerializeField] OldShield shield;
     [SerializeField] Gradient gradient;
     [SerializeField] Image fill;
 

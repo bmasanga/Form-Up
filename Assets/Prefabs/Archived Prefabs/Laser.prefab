@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4053914973450998024}
   - component: {fileID: 6690016891024661232}
   - component: {fileID: 5053304471386556865}
-  - component: {fileID: -3260162736155745324}
   - component: {fileID: 7865911116780806881}
+  - component: {fileID: 8489136940882607576}
   m_Layer: 8
   m_Name: Laser
   m_TagString: Untagged
@@ -98,20 +98,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.1, y: 0.4}
   m_Direction: 0
---- !u!114 &-3260162736155745324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 675338409100015005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 751316de206c344508206798ba90b46f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  hitEffect: {fileID: 5138278239686909396, guid: 9b39e3344caeb4fe38610717efaca702, type: 3}
 --- !u!96 &7865911116780806881
 TrailRenderer:
   serializedVersion: 3
@@ -152,7 +138,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 642656039
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Time: 0.25
   m_PreviewTimeScale: 1
@@ -225,6 +211,20 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &8489136940882607576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675338409100015005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce626be6e0a854e22b35165708107471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  hitEffect: {fileID: 5138278239686909396, guid: 9b39e3344caeb4fe38610717efaca702, type: 3}
 --- !u!1 &7333814651365185833
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +296,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1174038215
-  m_SortingLayer: 10
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 84d6c9aef00b54aa99a21251ac39943d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

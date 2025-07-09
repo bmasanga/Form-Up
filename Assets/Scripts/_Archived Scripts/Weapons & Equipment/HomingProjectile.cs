@@ -53,7 +53,7 @@ public class HomingProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Shield shield = other.GetComponent<Shield>();
+        OldShield shield = other.GetComponent<OldShield>();
         if (shield != null)
         {
             shield.TakeDamage(damage);

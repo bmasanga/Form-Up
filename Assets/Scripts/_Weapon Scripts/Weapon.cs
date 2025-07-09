@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : MonoBehaviour, IWeapon
+public abstract class Weapon : MonoBehaviour, IWeapon, IWeaponReadable
 {
     [SerializeField] protected WeaponConfig config;
 
     private float lastFireTime;
     private float currentHeat;
-    private bool overheated = false;
+    private bool isOverheated = false;
 
     public WeaponConfig GetConfig() => config;
 
@@ -46,7 +46,7 @@ public abstract class Weapon : MonoBehaviour, IWeapon
     private bool CanFire()
     {
         float secondsBetweenShots = 1f / config.fireRate;
-        return Time.time >= lastFireTime + secondsBetweenShots && !overheated;
+        return Time.time >= lastFireTime + secondsBetweenShots && !isOverheated;
     }
 
     private void AddHeat()
@@ -54,7 +54,7 @@ public abstract class Weapon : MonoBehaviour, IWeapon
         currentHeat += config.heatPerShot;
         if (currentHeat >= config.maxHeat)
         {
-            overheated = true;
+            isOverheated = true;
         }
     }
 
@@ -66,9 +66,22 @@ public abstract class Weapon : MonoBehaviour, IWeapon
             if (currentHeat <= 0)
             {
                 currentHeat = 0;
-                overheated = false;
+                isOverheated = false;
             }
         }
     }
+
+    public float GetCurrentHeat()
+    {
+        return currentHeat;
+    }
+    public float GetMaxHeat()
+    {
+        return config.maxHeat;
+    }
+    public bool IsOverheated()
+    {
+        return isOverheated;
+    }     
 
 }

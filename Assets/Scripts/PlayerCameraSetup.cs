@@ -25,7 +25,7 @@ public class PlayerCameraSetup : NetworkBehaviour
         }
     }
 
-    private void OnDestroy()
+    private new void OnDestroy()
     {
         if (IsOwner && playerCameraInstance != null)
         {

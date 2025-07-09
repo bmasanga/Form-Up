@@ -16,7 +16,7 @@ MonoBehaviour:
   projectileSpeed: 30
   projectileLifetime: 3
   damage: 10
-  fireRate: 1
+  fireRate: 5
   heatPerShot: 1
   maxHeat: 10
-  cooldownRate: 0.5
+  cooldownRate: 2.5

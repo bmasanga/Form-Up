@@ -17,7 +17,7 @@ public class Blast : MonoBehaviour
           
           PlayHitEffect();
 
-          Shield shield = other.GetComponent<Shield>();
+          OldShield shield = other.GetComponent<OldShield>();
           if (shield != null)
           {
                shield.TakeDamage(damage);

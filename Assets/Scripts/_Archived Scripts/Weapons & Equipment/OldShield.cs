@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Shield : MonoBehaviour
+public class OldShield : MonoBehaviour
 {
     [SerializeField] bool isActive = true;
     [SerializeField] float maxHP = 50f;

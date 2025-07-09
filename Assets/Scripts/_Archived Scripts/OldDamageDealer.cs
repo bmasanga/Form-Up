@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageDealer : MonoBehaviour
+public class OldDamageDealer : MonoBehaviour
 {
     [SerializeField] float damage = 10;
     [SerializeField] ParticleSystem hitEffect;
@@ -11,7 +11,7 @@ public class DamageDealer : MonoBehaviour
     {   
         PlayHitEffect(other.contacts[0].point);
 
-        Shield shield = other.gameObject.GetComponentInChildren<Shield>();
+        OldShield shield = other.gameObject.GetComponentInChildren<OldShield>();
         if (shield != null)
         {
             shield.TakeDamage(damage);

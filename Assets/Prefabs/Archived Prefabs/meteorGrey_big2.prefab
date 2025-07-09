@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5010523782336339715}
   - component: {fileID: 8283385632698644902}
   - component: {fileID: 8953091178801932734}
-  - component: {fileID: 861176113937667405}
+  - component: {fileID: 7394503189297756400}
+  - component: {fileID: -1171595588764897048}
   m_Layer: 12
   m_Name: meteorGrey_big2
   m_TagString: Untagged
@@ -180,7 +181,7 @@ PolygonCollider2D:
       - {x: 0.033333335, y: -1.1}
       - {x: 1.1333334, y: -0.8000001}
   m_UseDelaunayMesh: 0
---- !u!114 &861176113937667405
+--- !u!114 &7394503189297756400
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,8 +190,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1835677346713312156}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ea4285a50340401990dc9d8850a75be, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a5c1a043551a446ca28cfe4e8d65fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
   hitEffect: {fileID: 5138278239686909396, guid: 9b39e3344caeb4fe38610717efaca702, type: 3}
+--- !u!114 &-1171595588764897048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835677346713312156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a47c687ca4746518abc8c394ccad4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHP: 0
+  maxHP: 100

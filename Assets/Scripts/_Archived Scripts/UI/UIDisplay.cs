@@ -14,7 +14,7 @@ public class UIDisplay : MonoBehaviour
     [SerializeField] Color32 criticalStatusColor = new Color32 (255, 0, 0, 200);
     
     [Header("Shield Meter")]
-    [SerializeField] Shield shield;
+    [SerializeField] OldShield shield;
     [SerializeField] Slider shieldMeter;
     [SerializeField] TextMeshProUGUI shieldStatus;
 
