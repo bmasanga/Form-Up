@@ -16,13 +16,20 @@ public class PlayerCameraSetup : NetworkBehaviour
         {
             playerCameraInstance = Instantiate(cameraPrefab);
 
+            var followCam = playerCameraInstance.GetComponentInChildren<FollowCamera>();
+            if (followCam != null)
+            {
+                followCam.Target = transform;
+            }   
+            /*
             var vcam = playerCameraInstance.GetComponentInChildren<CinemachineVirtualCamera>();
             if (vcam != null)
             {
                 vcam.Follow = transform;
                 // vcam.LookAt = transform;
             }
-        }
+            */
+            }
     }
 
     private new void OnDestroy()

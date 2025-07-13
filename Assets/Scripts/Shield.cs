@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shield : MonoBehaviour, IShield, IShieldReadable
@@ -25,6 +26,13 @@ public class Shield : MonoBehaviour, IShield, IShieldReadable
         shieldCollider = GetComponent<Collider2D>();
         currentShieldHP = maxShieldHP;
         hitPoints = GetComponentInParent<IHitPoints>();
+
+        if (shieldSprite == null)
+            Debug.LogError($"[{name}] missing child SpriteRenderer for shield visuals.");
+        if (shieldCollider == null)
+            Debug.LogError($"[{name}] missing Collider2D to block hits.");
+        if (hitPoints == null)
+            Debug.LogError($"[{name}] couldn’t find IHitPoints on parent—damage won’t spill over.");
     }
 
     private void Update()
@@ -101,7 +109,7 @@ public class Shield : MonoBehaviour, IShield, IShieldReadable
         isActive = false;
         isWaitingToRegen = false;
         isRegenerating = false;
-        shieldSprite.enabled = false;
+        if (shieldSprite != null) shieldSprite.enabled = false;
         if (shieldCollider) shieldCollider.enabled = false;  // let hits pass through
 
     }
@@ -109,7 +117,7 @@ public class Shield : MonoBehaviour, IShield, IShieldReadable
     private void ActivateShield()
     {
         isActive = true;
-        shieldSprite.enabled = true;
+        if (shieldSprite != null) shieldSprite.enabled = true;
         if (shieldCollider) shieldCollider.enabled = true;        
     }
 

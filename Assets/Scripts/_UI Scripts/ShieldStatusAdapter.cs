@@ -9,7 +9,7 @@ public class ShieldStatusAdapter : MonoBehaviour, IStatusProvider
     void Awake()
     {
         shield = transform.root.GetComponentInChildren<IShieldReadable>();
-        Debug.Log("Shield found: " + (shield != null), this);
+        //Debug.Log("Shield found: " + (shield != null), this);
 
     }
 

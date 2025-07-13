@@ -14,6 +14,12 @@ public abstract class Weapon : MonoBehaviour, IWeapon, IWeaponReadable
 
     private void Update()
     {
+        if (config == null)
+            {
+                Debug.LogError($"[{name}] WeaponConfig is null!");
+                return;
+            }
+
         CoolDownHeat();
     }
 

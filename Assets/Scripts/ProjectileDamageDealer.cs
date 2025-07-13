@@ -13,6 +13,8 @@ public class ProjectileDamageDealer : MonoBehaviour
     {
         // Cache this so you can disable it immediately on hit
         _collider = GetComponent<Collider2D>();
+        if (_collider == null)
+            Debug.LogError($"[{name}] needs a Collider2D to detect triggers.");
     }
 
     private void OnTriggerEnter2D(Collider2D other)

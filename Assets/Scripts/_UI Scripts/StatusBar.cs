@@ -10,10 +10,12 @@ public class StatusBar : MonoBehaviour
     [SerializeField] Image fill;
 
     private IStatusProvider statusProvider;
-    
+
     void Awake()
     {
         statusProvider = GetComponent<IStatusProvider>();
+        if (statusProvider == null)
+            Debug.LogError($"[{name}] missing IStatusProvider.");
     }
 
     void Start()

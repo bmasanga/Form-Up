@@ -9,7 +9,7 @@ public class WeaponStatusAdapter : MonoBehaviour, IStatusProvider
     void Awake()
     {
         weapon = transform.root.GetComponentInChildren<IWeaponReadable>();
-        Debug.Log("Weapon found: " + (weapon != null), this);
+        //Debug.Log("Weapon found: " + (weapon != null), this);
 
     }
 

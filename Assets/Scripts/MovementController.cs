@@ -12,6 +12,8 @@ public class MoveController : MonoBehaviour, IMoveable
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (rb == null)
+            Debug.LogError($"[{name}] requires a Rigidbody2D!");
     }
 
     public void Move(Vector2 input)
