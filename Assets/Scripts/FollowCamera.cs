@@ -8,7 +8,7 @@ public class FollowCamera : MonoBehaviour
     public Transform Target { get; set; }
 
     [SerializeField] private Vector3 offset = new Vector3(0, 0, -10);
-    [SerializeField] private float smoothTime = 0.1f;
+    //[SerializeField] private float smoothTime = 0.1f;
     private Vector3 _velocity;
 
     void FixedUpdate()

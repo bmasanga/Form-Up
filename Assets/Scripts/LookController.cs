@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class LookController : MonoBehaviour, ILookable
 {
-    [SerializeField] private float turnSpeed           = 200f;
-    [SerializeField] private float minInputMagnitude   = 0.1f;
+    [SerializeField] private float turnSpeed = 200f;
+    [SerializeField] private float minInputMagnitude = 0.1f;
 
-    private bool    hasWorldTarget = false;
-    private Vector2 worldTarget    = Vector2.zero;
-    private Camera  playerCamera;
+    private bool hasWorldTarget = false;
+    private Vector2 worldTarget = Vector2.zero;
+    private Camera playerCamera;
 
     private void Start()
     {
@@ -29,13 +29,13 @@ public class LookController : MonoBehaviour, ILookable
         }
 
         // mouse-based rotation
-        worldTarget    = input;
+        worldTarget = input;
         hasWorldTarget = true;
     }
 
     private void Update()
     {
-        if (!hasWorldTarget || playerCamera == null) 
+        if (!hasWorldTarget || playerCamera == null)
             return;
 
         RotateTowardMouse(worldTarget);
@@ -80,4 +80,5 @@ public class LookController : MonoBehaviour, ILookable
             turnSpeed * Time.deltaTime
         );
     }
+    
 }
