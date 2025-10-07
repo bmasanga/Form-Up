@@ -80,5 +80,29 @@ public class LookController : MonoBehaviour, ILookable
             turnSpeed * Time.deltaTime
         );
     }
+
+    // // Added this method
+    // public float ComputeLookAngleDeg(Vector2 input, bool isWorldPosition, Camera cam)
+    // {
+    //     if (!isWorldPosition)
+    //     {
+    //         if (input.sqrMagnitude < 0.0001f) return transform.eulerAngles.z;
+    //         return Mathf.Atan2(input.y, input.x) * Mathf.Rad2Deg - 90f;
+    //     }
+
+    //     if (cam == null) return transform.eulerAngles.z;
+
+    //     Ray ray = cam.ScreenPointToRay(input);
+    //     Plane plane = new Plane(Vector3.forward, new Vector3(0, 0, transform.position.z));
+    //     if (!plane.Raycast(ray, out float enter)) return transform.eulerAngles.z;
+    //     Vector3 worldPoint = ray.GetPoint(enter);
+
+    //     Vector2 dir = (Vector2)(worldPoint - transform.position);
+    //     if (dir.sqrMagnitude < 0.0001f) return transform.eulerAngles.z;
+
+    //     return Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+    // }
+    
+    // public float GetLookAngleDeg() => transform.eulerAngles.z;
     
 }
