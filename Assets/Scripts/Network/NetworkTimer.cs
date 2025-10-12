@@ -17,7 +17,7 @@ public class NetworkTimer
     }
     
     public bool ShouldTick() {
-        if (timer + 0.00001f >= MinTimeBetweenTicks) {
+        if (timer >= MinTimeBetweenTicks) {
             timer -= MinTimeBetweenTicks;
             CurrentTick++;
             return true;

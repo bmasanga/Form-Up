@@ -5,14 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputController : MonoBehaviour
 {
-    [SerializeField] private float controllerDeadzone = 0.1f;
-
     private PlayerInputActions playerInputActions;
     private IInputReceivable inputReceiver;
 
     public void Initialize(IInputReceivable receiver)
     {
         inputReceiver = receiver;
+        playerInputActions.Player.Enable();
     }
 
     private void Awake()
@@ -22,38 +21,94 @@ public class PlayerInputController : MonoBehaviour
 
     private void OnEnable()
     {
-        playerInputActions.Player.Enable();
+        var player = playerInputActions.Player;
 
-        playerInputActions.Player.Move.performed += ctx => inputReceiver?.SetMoveInput(ctx.ReadValue<Vector2>());
-        playerInputActions.Player.Move.canceled += ctx => inputReceiver?.SetMoveInput(Vector2.zero);
+        player.Move.performed += OnMovePerformed;
+        player.Move.canceled += OnMoveCanceled;
 
-        playerInputActions.Player.Look.performed += OnLookPerformed;
-        playerInputActions.Player.Look.canceled += ctx => inputReceiver?.SetLookInput(Vector2.zero, false);
+        player.Look.performed += OnLookPerformed;
+        player.Look.canceled += OnLookCanceled;
 
-        playerInputActions.Player.Fire.started += ctx => inputReceiver?.SetFire(true);
-        playerInputActions.Player.Fire.canceled += ctx => inputReceiver?.SetFire(false);
+        player.Fire.started += OnFireStarted;
+        player.Fire.canceled += OnFireCanceled;
 
-        playerInputActions.Player.Action.started += ctx => inputReceiver?.SetAction(true);
-        playerInputActions.Player.Action.canceled += ctx => inputReceiver?.SetAction(false);
+        player.Action.started += OnActionStarted;
+        player.Action.canceled += OnActionCanceled;
 
-        playerInputActions.Player.Toggle.started += ctx => inputReceiver?.SetToggle(true);
-        playerInputActions.Player.Toggle.canceled += ctx => inputReceiver?.SetToggle(false);
+        player.Toggle.started += OnToggleStarted;
+        player.Toggle.canceled += OnToggleCanceled;
 
-        playerInputActions.Player.Target.started += ctx => inputReceiver?.SetTarget(true);
-        playerInputActions.Player.Target.canceled += ctx => inputReceiver?.SetTarget(false);
+        player.Target.started += OnTargetStarted;
+        player.Target.canceled += OnTargetCanceled;
     }
 
     private void OnDisable()
     {
+        // Unsubscribe to avoid duplicate callbacks on re-enable
+        var player = playerInputActions.Player;
+
+        player.Move.performed -= OnMovePerformed;
+        player.Move.canceled -= OnMoveCanceled;
+
+        player.Look.performed -= OnLookPerformed;
+        player.Look.canceled -= OnLookCanceled;
+
+        player.Fire.started -= OnFireStarted;
+        player.Fire.canceled -= OnFireCanceled;
+
+        player.Action.started -= OnActionStarted;
+        player.Action.canceled -= OnActionCanceled;
+
+        player.Toggle.started -= OnToggleStarted;
+        player.Toggle.canceled -= OnToggleCanceled;
+
+        player.Target.started -= OnTargetStarted;
+        player.Target.canceled -= OnTargetCanceled;
+
+        // Disable the map so non-owners / disabled objects stop reading input
         playerInputActions.Player.Disable();
     }
+    
+    private void OnDestroy()
+    {
+        playerInputActions?.Dispose();
+    }
+
+    // --- Handlers ---
+    private void OnMovePerformed(InputAction.CallbackContext ctx)
+        => inputReceiver?.SetMoveInput(ctx.ReadValue<Vector2>());
+
+    private void OnMoveCanceled(InputAction.CallbackContext _)
+        => inputReceiver?.SetMoveInput(Vector2.zero);
 
     private void OnLookPerformed(InputAction.CallbackContext ctx)
-    {
-        Vector2 input = ctx.ReadValue<Vector2>();
-        bool isGamepad = Gamepad.current != null && input.magnitude > controllerDeadzone;
+        => inputReceiver?.SetLookInput(ctx.ReadValue<Vector2>());
 
-        // Interpret as stick direction or screen position
-        inputReceiver?.SetLookInput(input, isWorldPosition: !isGamepad);
-    }
+    private void OnLookCanceled(InputAction.CallbackContext _)
+        => inputReceiver?.SetLookInput(Vector2.zero);
+
+    private void OnFireStarted(InputAction.CallbackContext _)
+        => inputReceiver?.SetFire(true);
+
+    private void OnFireCanceled(InputAction.CallbackContext _)
+        => inputReceiver?.SetFire(false);
+
+    private void OnActionStarted(InputAction.CallbackContext _)
+        => inputReceiver?.SetAction(true);
+
+    private void OnActionCanceled(InputAction.CallbackContext _)
+        => inputReceiver?.SetAction(false);
+
+    private void OnToggleStarted(InputAction.CallbackContext _)
+        => inputReceiver?.SetToggle(true);
+
+    private void OnToggleCanceled(InputAction.CallbackContext _)
+        => inputReceiver?.SetToggle(false);
+
+    private void OnTargetStarted(InputAction.CallbackContext _)
+        => inputReceiver?.SetTarget(true);
+
+    private void OnTargetCanceled(InputAction.CallbackContext _)
+        => inputReceiver?.SetTarget(false);
+
 }

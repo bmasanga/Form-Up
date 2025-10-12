@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 5763877889990355641}
   - component: {fileID: 7231250265779026383}
   - component: {fileID: 3788253033189555927}
+  - component: {fileID: 4803428511230533489}
   m_Layer: 7
   m_Name: pf_Player_v2
   m_TagString: Untagged
@@ -329,9 +330,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2f9d7ef79214cae8c7b7ed7e923203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothingSpeed: 1
-  showServerDebug: 1
-  debugMarker: {fileID: 8682443275255448714}
+  reconciliationThreshold: 5
+  serverMarker: {fileID: 8682443275255448714}
 --- !u!114 &2485392176211626975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,7 +344,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e790bc4d183442dd9414e796db7b260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerDeadzone: 0.1
 --- !u!114 &8794118553031170982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,6 +433,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4803428511230533489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5219912919521325378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 0
+  SyncRotAngleY: 0
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  Interpolate: 1
+  SlerpPosition: 0
 --- !u!1 &6712365394272526127
 GameObject:
   m_ObjectHideFlags: 0

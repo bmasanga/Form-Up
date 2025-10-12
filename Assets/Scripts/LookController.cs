@@ -13,21 +13,14 @@ public class LookController : MonoBehaviour, ILookable
 
     private void Start()
     {
-        playerCamera = Camera.main;
-        if (playerCamera == null)
-            Debug.LogError("LookController: no camera tagged MainCamera in scene.");
+        if (playerCamera == null) // let AgentController override this first
+            playerCamera = Camera.main;
     }
 
-    public void SetLookDirection(Vector2 input, bool isWorldPosition)
-    {
-        if (!isWorldPosition)
-        {
-            // stick-based rotation (unchanged)
-            RotateTowardStick(input);
-            hasWorldTarget = false;
-            return;
-        }
+    public void SetCamera(Camera cam) => playerCamera = cam;
 
+    public void SetLookDirection(Vector2 input)
+    {
         // mouse-based rotation
         worldTarget = input;
         hasWorldTarget = true;
@@ -68,41 +61,6 @@ public class LookController : MonoBehaviour, ILookable
         );
     }
 
-    private void RotateTowardStick(Vector2 stickInput)
-    {
-        if (stickInput.sqrMagnitude < minInputMagnitude * minInputMagnitude)
-            return;
-        float angle = Mathf.Atan2(stickInput.y, stickInput.x) * Mathf.Rad2Deg - 90f;
-        Quaternion targetRot = Quaternion.Euler(0, 0, angle);
-        transform.rotation = Quaternion.RotateTowards(
-            transform.rotation,
-            targetRot,
-            turnSpeed * Time.deltaTime
-        );
-    }
+    public float GetLookAngleDeg() => transform.eulerAngles.z;
 
-    // // Added this method
-    // public float ComputeLookAngleDeg(Vector2 input, bool isWorldPosition, Camera cam)
-    // {
-    //     if (!isWorldPosition)
-    //     {
-    //         if (input.sqrMagnitude < 0.0001f) return transform.eulerAngles.z;
-    //         return Mathf.Atan2(input.y, input.x) * Mathf.Rad2Deg - 90f;
-    //     }
-
-    //     if (cam == null) return transform.eulerAngles.z;
-
-    //     Ray ray = cam.ScreenPointToRay(input);
-    //     Plane plane = new Plane(Vector3.forward, new Vector3(0, 0, transform.position.z));
-    //     if (!plane.Raycast(ray, out float enter)) return transform.eulerAngles.z;
-    //     Vector3 worldPoint = ray.GetPoint(enter);
-
-    //     Vector2 dir = (Vector2)(worldPoint - transform.position);
-    //     if (dir.sqrMagnitude < 0.0001f) return transform.eulerAngles.z;
-
-    //     return Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
-    // }
-    
-    // public float GetLookAngleDeg() => transform.eulerAngles.z;
-    
 }
